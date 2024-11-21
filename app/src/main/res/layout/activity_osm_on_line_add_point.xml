@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapViewOsmAddPoint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="false" />
+
+    <TextView
+        android:id="@+id/txtGpsIsOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/center_marker"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="GPS is OFF"
+        android:textColor="#AD0020"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/center_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/center_of_map" />
+
+    <Button
+        android:id="@+id/stop_coordinates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="STOP GPS" />
+
+    <!-- Кнопка для сохранения координат центра -->
+    <Button
+        android:id="@+id/btn_save_coordinates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/tetElow"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Save Coordinates" />
+
+    <Button
+        android:id="@+id/start_current_coord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/tetGreen"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="START GPS" />
+
+    <TextView
+        android:id="@+id/tvLowAccurracy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/txtLowAccurracy"
+        android:textColor="#AD0020"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

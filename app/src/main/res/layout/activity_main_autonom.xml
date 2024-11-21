@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="false"
+    android:layout_centerHorizontal="false"
+    android:layout_centerVertical="false"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.MainActivityAutonom">
+<!-- TODO Переписать все лайауты из Linea to ScrolViev  по этому образцу -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/setingsAutonom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/setting"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/choiceRout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/b_choise_route"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/statsMAA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/b_statistics"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/newRouteOwn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/b_addNewRoute"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/closeFromAppMAA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/b_back"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+</ScrollView>

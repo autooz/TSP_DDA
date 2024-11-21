@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".ThisApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TSP"
+        tools:replace="android:allowBackup"
+        tools:targetApi="31" >
+        <activity
+            android:name=".ui.points_and_maps.ActivityPointInfo"
+            android:exported="false" />
+        <activity
+            android:name=".ui.route.OnRouteMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.ShowAndEditRoute"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.AddNewPointOwnPoint"
+            android:exported="false" />
+        <activity
+            android:name=".ui.points_and_maps.ActivityOsmOnLineAddPoint"
+            android:exported="false" />
+        <activity
+            android:name=".ui.points_and_maps.ActivityGoogleMapWebView"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.AddNewPointToCurrentRoute"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.EditZone"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.AddNewZone"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.EditSaleMan"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.AddNewSaleMan"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.ZoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.SaleManActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.EditOrganisation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.AddNewOrganisation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.points_and_maps.ActivityOsmOnline"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.CreateNewRouteActivityAutonom"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.ChoiceRouteActivityAutonom"
+            android:exported="false" />
+        <activity
+            android:name=".ui.autonom.Statistics"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivityWiaServer"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivityAutonom"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

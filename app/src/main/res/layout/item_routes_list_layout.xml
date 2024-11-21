@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/route_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Point ID"
+        android:textSize="12sp"
+        android:layout_marginLeft="4dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/route_fiel1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Rout Name"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/route_fiel2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginRight="4dp"
+        android:text="Points by coma"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/buttonChoiseRoute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="4dp"
+        android:text="@string/selected" />
+</LinearLayout>
