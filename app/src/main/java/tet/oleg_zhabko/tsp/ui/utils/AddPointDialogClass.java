@@ -1,7 +1,5 @@
 package tet.oleg_zhabko.tsp.ui.utils;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -10,12 +8,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
-import org.osmdroid.api.IMapView;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
 import tet.oleg_zhabko.tsp.R;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.ActivityOsmOnLineAddPoint;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityOsmOnLineAddPoint;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
 public class AddPointDialogClass extends Dialog implements android.view.View.OnClickListener {

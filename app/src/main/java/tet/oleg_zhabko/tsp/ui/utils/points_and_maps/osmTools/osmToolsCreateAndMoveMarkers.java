@@ -1,4 +1,4 @@
-package tet.oleg_zhabko.tsp.ui.points_and_maps.osmTools;
+package tet.oleg_zhabko.tsp.ui.utils.points_and_maps.osmTools;
 
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;

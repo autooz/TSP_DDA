@@ -152,7 +152,8 @@ public class AllertOneAndTwoAndThreeButton {
                                 mActivity.startActivityForResult(positiveIntent, 22);
                             } else {
                                 mActivity.startActivity(positiveIntent);
-                                mActivity.finish();
+                               // mActivity.finish();
+                                bs.dismiss();
                             }
                             //mActivity.finish();
                             bs.dismiss();
@@ -162,11 +163,11 @@ public class AllertOneAndTwoAndThreeButton {
                     }
                 });
         if (!hideCloseButton) {
-            builder.setNeutralButton(R.string.exitButonText, new DialogInterface.OnClickListener() {
+            builder.setNeutralButton(R.string.close, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     bs.dismiss();
-                    mActivity.finish();
+                   // mActivity.finish();
                 }
             });
         }

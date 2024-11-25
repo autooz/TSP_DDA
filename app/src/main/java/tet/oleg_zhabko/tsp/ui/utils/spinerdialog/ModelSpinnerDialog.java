@@ -29,7 +29,7 @@ import tet.oleg_zhabko.tsp.ui.autonom.AddNewZone;
 import tet.oleg_zhabko.tsp.ui.autonom.CreateNewRouteActivityAutonom;
 import tet.oleg_zhabko.tsp.ui.autonom.SaleManActivity;
 import tet.oleg_zhabko.tsp.ui.autonom.ZoneActivity;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.ActivityOsmOnLineAddPoint;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityOsmOnLineAddPoint;
 import tet.oleg_zhabko.tsp.ui.utils.AllertOneAndTwoAndThreeButton;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.ShowAllInArrayList;
@@ -178,12 +178,10 @@ public class ModelSpinnerDialog {
                         return;
                     }
 
-                    new ShowAllInArrayList(pseudo_tag, allPointsArAr);
 
                 } else if (classname.equals(ZoneActivity.class.getSimpleName())){
                     TetDebugUtil.e(pseudo_tag,"YES I am here 2");
                     allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `zone`, `point_owner`, `landmarks` FROM `owner_points` WHERE `zone`='"+GlobalDatas.zoneName+"' AND organisation_name='"+GlobalDatas.getOrgName()+"'");
-                    new ShowAllInArrayList(pseudo_tag, allPointsArAr);
                 } else if (classname.equals(CreateNewRouteActivityAutonom.class.getSimpleName())) {
                     allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `zone`, `point_owner`, `landmarks` FROM `owner_points` WHERE organisation_name='"+GlobalDatas.getOrgName()+"'");
                 }

@@ -1,13 +1,8 @@
-package tet.oleg_zhabko.tsp.ui.points_and_maps;
+package tet.oleg_zhabko.tsp.ui.utils.points_and_maps;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;

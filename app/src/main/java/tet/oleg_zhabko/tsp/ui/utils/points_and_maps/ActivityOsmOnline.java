@@ -1,20 +1,14 @@
-package tet.oleg_zhabko.tsp.ui.points_and_maps;
+package tet.oleg_zhabko.tsp.ui.utils.points_and_maps;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.Criteria;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -34,10 +28,10 @@ import java.util.ArrayList;
 import tet.oleg_zhabko.tsp.MainActivity;
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.gpsTools.GpsManager;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.osmTools.osmToolsAddNecessaryItems;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.osmTools.osmToolsCreateAndMoveMarkers;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.osmTools.osmToolsSetNecessaryParams;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.gpsTools.GpsManager;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.osmTools.osmToolsAddNecessaryItems;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.osmTools.osmToolsCreateAndMoveMarkers;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.osmTools.osmToolsSetNecessaryParams;
 import tet.oleg_zhabko.tsp.ui.utils.PermissionUtils;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
@@ -86,7 +80,7 @@ public class ActivityOsmOnline extends Activity implements GpsManager.OnLocation
 
         mMapView = osmToolsSetNecessaryParams.addParams(mMapView, mapController);
 
-        GeoPoint startPoint = GlobalDatas.statGeoPoint;
+        GeoPoint startPoint = GlobalDatas.startGeoPoint;
         mMapView = osmToolsCreateAndMoveMarkers.setCenterOnPositionMarker(mMapView, startPoint);
         mMapView = osmToolsAddNecessaryItems.add(mMapView, this);
 

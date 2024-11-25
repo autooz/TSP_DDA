@@ -9,19 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
-import tet.oleg_zhabko.tsp.datas.GlobalDatas;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.ActivityPointInfo;
-import tet.oleg_zhabko.tsp.ui.utils.CheckIsItemDubbed;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
-import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 import tet.oleg_zhabko.tsp.ui.utils.mapsTypeSeparator;
 
 public class AdapterCurrentRoute extends BaseAdapter {

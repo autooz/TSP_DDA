@@ -1,4 +1,4 @@
-package tet.oleg_zhabko.tsp.ui.points_and_maps.gpsTools;
+package tet.oleg_zhabko.tsp.ui.utils.points_and_maps.gpsTools;
 
 import android.Manifest;
 import android.app.Activity;

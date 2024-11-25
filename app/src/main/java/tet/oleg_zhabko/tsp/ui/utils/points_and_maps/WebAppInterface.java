@@ -1,4 +1,4 @@
-package tet.oleg_zhabko.tsp.ui.points_and_maps;
+package tet.oleg_zhabko.tsp.ui.utils.points_and_maps;
 
 import android.content.Context;
 import android.webkit.JavascriptInterface;

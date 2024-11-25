@@ -1,4 +1,4 @@
-package tet.oleg_zhabko.tsp.ui.points_and_maps;
+package tet.oleg_zhabko.tsp.ui.utils.points_and_maps;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +17,7 @@ public class MapsOpenerReturnIntent {
      Intent intent = null;
 
 
-     String activitySimpleName = new SettingsUtils().getSettingValue(GlobalDatas.db_name, GlobalDatas.seingMapsActivity);
+     String activitySimpleName = new SettingsUtils().getSettingValue(GlobalDatas.db_name, GlobalDatas.setingMapsActivity);
 
      if(activitySimpleName.equals(ActivityOsmOnline.class.getSimpleName())){
         intent = new Intent(applicationContext, ActivityOsmOnline.class);

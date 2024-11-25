@@ -1,4 +1,4 @@
-package tet.oleg_zhabko.tsp.ui.points_and_maps;
+package tet.oleg_zhabko.tsp.ui.utils.points_and_maps;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,8 +21,7 @@ import tet.oleg_zhabko.tsp.datas.GlobalDatas;
 import tet.oleg_zhabko.tsp.ui.autonom.AddNewPointOwnPoint;
 import tet.oleg_zhabko.tsp.ui.autonom.SaleManActivity;
 import tet.oleg_zhabko.tsp.ui.autonom.ZoneActivity;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.gpsTools.GpsManager;
-import tet.oleg_zhabko.tsp.ui.utils.AddPointDialogClass;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.gpsTools.GpsManager;
 import tet.oleg_zhabko.tsp.ui.utils.PermissionUtils;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;

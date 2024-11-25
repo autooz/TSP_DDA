@@ -13,7 +13,7 @@ import android.widget.Toast;
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.ActivityOsmOnLineAddPoint;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityOsmOnLineAddPoint;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterEditRoute;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;

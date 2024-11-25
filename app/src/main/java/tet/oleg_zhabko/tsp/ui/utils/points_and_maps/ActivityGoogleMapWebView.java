@@ -1,20 +1,13 @@
-package tet.oleg_zhabko.tsp.ui.points_and_maps;
+package tet.oleg_zhabko.tsp.ui.utils.points_and_maps;
 
 import static android.view.Gravity.CENTER;
-import static android.view.Gravity.CENTER_HORIZONTAL;
-import static android.view.Gravity.CENTER_VERTICAL;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.location.Location;
-import android.location.LocationListener;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.DisplayMetrics;
-import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -23,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.helper.widget.Layer;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,7 +24,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ui.MainActivityAutonom;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.gpsTools.GpsManager;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.gpsTools.GpsManager;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
 public class ActivityGoogleMapWebView extends Activity implements GpsManager.OnLocationReceivedListener {
