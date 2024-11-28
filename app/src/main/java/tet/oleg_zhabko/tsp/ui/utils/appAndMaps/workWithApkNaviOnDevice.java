@@ -210,8 +210,6 @@ public class workWithApkNaviOnDevice {
             intent = new Intent(Intent.ACTION_VIEW, uri);
             intent.setPackage(appPackageName);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-
             context.startActivity(intent);
         } else {
             Toast.makeText(context, "Приложение не установлено", Toast.LENGTH_LONG).show();

@@ -33,6 +33,7 @@ public class AddNewZone extends Activity implements View.OnClickListener {
     private String zoneName;
     private String descr;
     private RecyclerView recyclerView;
+    private String who;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class AddNewZone extends Activity implements View.OnClickListener {
         Thread.setDefaultUncaughtExceptionHandler(new CrashAppExceptionHandler(this));
         ThisApp.getInstance().adjastFontScale();
         TetDebugUtil.e(pseudo_tag, "!================= START " + pseudo_tag + "============");
+
+        who = getIntent().getStringExtra("who");
 
         setContentView(R.layout.activity_add_new_zone);
 
@@ -92,7 +95,12 @@ public class AddNewZone extends Activity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), ZoneActivity.class));
-        this.finish();
+        if (who.equals(CreateNewRouteActivityAutonom.class.getSimpleName())){
+            startActivity(new Intent(getApplicationContext(),CreateNewRouteActivityAutonom.class));
+            this.finish();
+        } else {
+            startActivity(new Intent(getApplicationContext(), ZoneActivity.class));
+            this.finish();
+        }
     }
 }

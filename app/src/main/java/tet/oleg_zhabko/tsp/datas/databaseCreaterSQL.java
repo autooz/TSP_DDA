@@ -147,7 +147,7 @@ public final class databaseCreaterSQL {
             "INSERT INTO settings (variable, value, description) VALUES ('scaleText', '100', 'App Scale Setting');\n" +
             "INSERT INTO settings (variable, value, description) VALUES ('passwd', '', '');\n" +
             "INSERT INTO settings (variable, value, description) VALUES ('passNeed', 'false', 'Is password need?');\n" +
-            "INSERT INTO settings (variable, value, description) VALUES ('"+GlobalDatas.seingMapsActivity+"', '', '');\n" +
+            "INSERT INTO settings (variable, value, description) VALUES ('"+GlobalDatas.setingMapsActivity +"', '', '');\n" +
             "DROP TABLE IF EXISTS zones;\n" +
             "CREATE TABLE zones (zone_id INTEGER PRIMARY KEY AUTOINCREMENT,  org_id INTEGER (3), zone_name, desc VARCHAR (450), is_active VARCHAR (10));\n" +
     "DROP TABLE IF EXISTS salesman;\n" +

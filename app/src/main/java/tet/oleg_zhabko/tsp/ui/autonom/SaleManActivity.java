@@ -186,7 +186,7 @@ public class SaleManActivity extends Activity implements View.OnClickListener {
         } else if (id == R.id.btnSaleAddPoints) {
             TetDebugUtil.e(pseudo_tag," Click btnSaleAddPoints");
             String title = getResources().getString(R.string.txtAdditingSalePoint);
-            String content = getResources().getString(R.string.txtEdditionPointAdd);
+            String content = getResources().getString(R.string.txtEdditionPointAdd) + " "+ GlobalDatas.getOrgName();
             Intent positive = new Intent(getApplicationContext(), ActivityOsmOnLineAddPoint.class);
             positive.putExtra("who", pseudo_tag);
             positive.putExtra("org",GlobalDatas.getOrgName());

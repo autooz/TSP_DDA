@@ -56,7 +56,7 @@
     <string name="txtEditingOrg">Редактирование организации</string>
     <string name="titleSelectTypeCreation">Выбор точек по:</string>
     <string name="txtBtnBySaleMan">представителям</string>
-    <string name="txtBtnByZone">зонам/секторам</string>
+    <string name="txtBtnByZone">зонам \n секторам</string>
     <string name="titleChoiseSaleMan">Выбор торгового представителя</string>
     <string name="txtSaleName">Представитель</string>
     <string name="titleAdditingSaleMans">Добавление представителей</string>
@@ -103,4 +103,10 @@
     <string name="b_fromList">Из существующих</string>
     <string name="txtEdditionPointAdd">Для дополнения списка точек маршрута, \n выбирите откуда добавить новую точку.</string>
     <string name="close">Закрыть</string>
+    <string name="titleInstallApp">УСТАНОВКА APP</string>
+    <string name="txtInstallAppQuest">Вы хотите установить на свой девайс:</string>
+    <string name="txtPreferredEdiorMaps">Предпочитаемая карта редактирования</string>
+    <string name="btnTxtCreateToRoute">Создать маршрут</string>
+    <string name="tvNewSaleM">Новый \n представитель</string>
+    <string name="tvNewZon">Новая \n зона</string>
 </resources>

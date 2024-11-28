@@ -59,6 +59,8 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
     private String orgIdForGlodalData;
     private Button buyyonAddBySaleMan;
     private Button buttonByZone;
+    private Button buttonNewSAleMan;
+    private Button buttonNezone;
     private Button buttonSavePoints;
 
 
@@ -93,6 +95,10 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
         buyyonAddBySaleMan.setOnClickListener(this);
         buttonByZone = (Button) findViewById(R.id.btnByZone);
         buttonByZone.setOnClickListener(this);
+        buttonNewSAleMan = (Button) findViewById(R.id.btnNewSAleM);
+        buttonNewSAleMan.setOnClickListener(this);
+        buttonNezone = (Button) findViewById(R.id.btnNezone);
+        buttonNezone.setOnClickListener(this);
         buttonSavePoints = (Button) findViewById(R.id.button_save);
         buttonSavePoints.setOnClickListener(this);
 
@@ -224,10 +230,21 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
             TetDebugUtil.e(pseudo_tag," Touched R.id.btnBySaleMan");
             startActivity(new Intent(getApplicationContext(),SaleManActivity.class));
             this.finish();
-        } else if(id == R.id.btnByZone){
-            TetDebugUtil.e(pseudo_tag," Touched R.id.btnByZone");
+        } else if(id == R.id.btnByZone) {
+            TetDebugUtil.e(pseudo_tag, " Touched R.id.btnByZone");
             startActivity(new Intent(getApplicationContext(), ZoneActivity.class));
             this.finish();
+        } else if (id == R.id.btnNewSAleM){
+            Intent intent = new Intent(getApplicationContext(), AddNewSaleMan.class);
+            intent.putExtra("who", pseudo_tag);
+            startActivity(intent);
+            this.finish();
+        } else if (id == R.id.btnNezone){
+            Intent intent = new Intent(getApplicationContext(), AddNewZone.class);
+            intent.putExtra("who", pseudo_tag);
+            startActivity(intent);
+            this.finish();
+
         } else if (id == R.id.button_save) {
             ArrayList<ArrayList<String>> checkedItems = adapter.getCheckedItems();
             if (checkedItems.size() == 0){

@@ -160,20 +160,32 @@
                 android:textSize="14sp" />
 
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnNewSAleM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/tvShowAll" />
+            android:text="@string/tvNewSaleM" />
+            <Button
+                android:id="@+id/btnNezone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/tvNewZon" />
+        </LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/showRoute" />
+        android:text="@string/btnTxtCreateToRoute" />
 
     <ListView
         android:id="@+id/listView"

@@ -5,7 +5,7 @@
     android:id="@+id/mainPoints"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.points_and_maps.ActivityGoogleMapWebView">
+    tools:context=".ui.utils.points_and_maps.ActivityGoogleMapWebView">
 
     <WebView
         android:id="@+id/webView"

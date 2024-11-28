@@ -148,12 +148,12 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:id="@+id/txtPeferredMap"
+                    android:id="@+id/txtMapForEdit"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center_horizontal"
-                    android:text="@string/txtPreferredNavMaps"
+                    android:text="@string/txtPreferredEdiorMaps"
                     android:textSize="16sp" />
             </TableRow>
 
@@ -164,7 +164,7 @@
 
 
                 <RadioGroup
-                    android:id="@+id/rGrooupeMaps"
+                    android:id="@+id/rGroupeMaps"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -182,11 +182,6 @@
                         android:layout_height="wrap_content"
                         android:text="OSM On Line" />
 
-                    <RadioButton
-                        android:id="@+id/rbWaze"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Waze" />
 
                     <RadioButton
                         android:id="@+id/rbGoogleOffLine"
@@ -195,16 +190,95 @@
                         android:text="Google Off Line" />
 
                     <RadioButton
-                        android:id="@+id/rbGoogleNavi"
+                        android:id="@+id/rbGoogleMaps"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Google Navi" />
-
+                        android:text="Google Maps" />
                     <RadioButton
                         android:id="@+id/rbGoogleWebView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Google WebView" />
+                </RadioGroup>
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/txtPeferredMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="@string/txtPreferredNavMaps"
+                    android:textSize="16sp" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/saveSettingsNavi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+                <RadioGroup
+                    android:id="@+id/rGroupeNawigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="6dp">
+
+                    <RadioButton
+                        android:id="@+id/rbWaze"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Waze" />
+                    <RadioButton
+                        android:id="@+id/rbGoogleNavi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Google Navigation" />
+                    <RadioButton
+                        android:id="@+id/rbNavitel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Navitel" />
+                    <RadioButton
+                        android:id="@+id/rbOsmand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OsmAnd" />
+                    <RadioButton
+                        android:id="@+id/rbSygic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sygic GPS Navigation" />
+                    <RadioButton
+                        android:id="@+id/rbhHuawei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Huawei maps" />
+                    <RadioButton
+                        android:id="@+id/rbTomtom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TomTom Navigation" />
+                    <RadioButton
+                        android:id="@+id/rbMapsWithMe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MapsWithMe" />
+                    <RadioButton
+                        android:id="@+id/rb2gis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2gis (DublGis)" />
+                    <RadioButton
+                        android:id="@+id/rbIgo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="iGO Navigation" />
                 </RadioGroup>
             </TableRow>
 

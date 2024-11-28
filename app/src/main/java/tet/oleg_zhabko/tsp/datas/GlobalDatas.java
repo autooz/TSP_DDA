@@ -5,9 +5,11 @@ import android.content.Context;
 import org.osmdroid.util.GeoPoint;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import tet.oleg_zhabko.tsp.ThisApp;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.osmTools.osmToolsAddNecessaryItems;
+import tet.oleg_zhabko.tsp.ui.utils.appAndMaps.workWithApkNaviOnDevice;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.osmTools.osmToolsAddNecessaryItems;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
@@ -20,6 +22,8 @@ import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 public class GlobalDatas {
 
     public static ArrayList<ArrayList<String>> pointChecked = new ArrayList<>();
+    public static ArrayList<workWithApkNaviOnDevice.appButtonExistencePakageClass> appsSupportedList = new ArrayList<>();
+
     private static String pseudo_tag = GlobalDatas.class.getSimpleName();
 
     private static AllDatabaseController allDbController = AllDatabaseController.getSingleControllerInstance();
@@ -30,8 +34,9 @@ public class GlobalDatas {
     public static String saleManId = new String();
     public static String zoneName = new String();
     public static String zoneId = new String();
-    public static String seingMapsActivity = "mapsActivity";
-    public static GeoPoint statGeoPoint = new GeoPoint(49.8992800, 28.6023500);
+    public static String setingMapsActivity = "mapsActivity";
+    public static String navigationAPP = new String();
+    public static GeoPoint startGeoPoint = new GeoPoint(49.8992800, 28.6023500);
     public static float minGpsAccurracy = 10.1f;
     public static boolean gpsPaused = false;
 

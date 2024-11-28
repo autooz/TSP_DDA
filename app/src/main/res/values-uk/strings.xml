@@ -103,4 +103,10 @@
     <string name="b_fromList">З існуючих</string>
     <string name="txtEdditionPointAdd">Для доповнення списку точок маршруту,\n виберіть звідки додати нову точку.</string>
     <string name="close">Закрити</string>
+    <string name="titleInstallApp">УСТАНОВКА APP</string>
+    <string name="txtInstallAppQuest">Вы хотите установить на свой девайс:</string>
+    <string name="txtPreferredEdiorMaps">Предпочитаемая карта редактирования</string>
+    <string name="btnTxtCreateToRoute">Создать маршрут</string>
+    <string name="tvNewSaleM">Новый представитель</string>
+    <string name="tvNewZon">Новая зона</string>
 </resources>

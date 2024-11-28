@@ -11,8 +11,8 @@ import tet.oleg_zhabko.tsp.datas.databaseCreaterSQL;
 import tet.oleg_zhabko.tsp.ui.MainActivityAutonom;
 import tet.oleg_zhabko.tsp.ui.MainActivityWiaServer;
 import tet.oleg_zhabko.tsp.ui.SettingsActivity;
-import tet.oleg_zhabko.tsp.ui.points_and_maps.ActivityOsmOnLineAddPoint;
-import tet.oleg_zhabko.tsp.ui.utils.appAndMaps.isAPKInstalledOnDEvice;
+import tet.oleg_zhabko.tsp.ui.utils.appAndMaps.workWithApkNaviOnDevice;
+import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityOsmOnLineAddPoint;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
@@ -78,11 +78,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             //  intent = new Intent(getApplicationContext(), MainActivityDataPickerView.class);
             finish();
         } else if (id == R.id.debugApp){
-           // intent = new Intent(getApplicationContext(), ActivityOsmOnLineAddPoint.class);
-            new isAPKInstalledOnDEvice(getApplicationContext()).checkAllApps();
+           intent = new Intent(getApplicationContext(), SettingsActivity.class);
         }
-//        startActivity(intent);
-//        this.finish();
+        startActivity(intent);
+        //this.finish();
     }
 
 

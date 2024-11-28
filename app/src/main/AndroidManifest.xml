@@ -22,7 +22,7 @@
         tools:replace="android:allowBackup"
         tools:targetApi="31" >
         <activity
-            android:name=".ui.points_and_maps.ActivityPointInfo"
+            android:name=".ui.utils.points_and_maps.ActivityPointInfo"
             android:exported="false" />
         <activity
             android:name=".ui.route.OnRouteMainActivity"
@@ -34,10 +34,10 @@
             android:name=".ui.autonom.AddNewPointOwnPoint"
             android:exported="false" />
         <activity
-            android:name=".ui.points_and_maps.ActivityOsmOnLineAddPoint"
+            android:name=".ui.utils.points_and_maps.ActivityOsmOnLineAddPoint"
             android:exported="false" />
         <activity
-            android:name=".ui.points_and_maps.ActivityGoogleMapWebView"
+            android:name=".ui.utils.points_and_maps.ActivityGoogleMapWebView"
             android:exported="false" />
         <activity
             android:name=".ui.autonom.AddNewPointToCurrentRoute"
@@ -67,7 +67,7 @@
             android:name=".ui.autonom.AddNewOrganisation"
             android:exported="false" />
         <activity
-            android:name=".ui.points_and_maps.ActivityOsmOnline"
+            android:name=".ui.utils.points_and_maps.ActivityOsmOnline"
             android:exported="false" />
         <activity
             android:name=".ui.autonom.CreateNewRouteActivityAutonom"

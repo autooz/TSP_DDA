@@ -15,8 +15,11 @@ import java.util.ArrayList;
 
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
+import tet.oleg_zhabko.tsp.datas.GlobalDatas;
+import tet.oleg_zhabko.tsp.ui.utils.appAndMaps.workWithApkNaviOnDevice;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.oleg_zhabko.tsp.ui.utils.mapsTypeSeparator;
+import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
 public class AdapterCurrentRoute extends BaseAdapter {
     private static final String pseudo_tag = AdapterCurrentRoute.class.getSimpleName();
@@ -90,14 +93,31 @@ public class AdapterCurrentRoute extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 String pointId = currentItem.get(0);
-                    SharedPreferences sharedPrefs = ThisApp.getSharedPreferenceManager();
+                SharedPreferences sharedPrefs = ThisApp.getSharedPreferenceManager();
                 SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.putString("directPoint", pointId);
                 editor.apply();
-                Intent intent = mapsTypeSeparator.getPreferedMaps();
-                context.startActivity(intent);
-
+                String appPackageName = mapsTypeSeparator.getPreferedNavigationMap(activity);
+                workWithApkNaviOnDevice mapsManipulation = new workWithApkNaviOnDevice(activity);
+                if (mapsManipulation.isAppInstalled(appPackageName)) {
+                    ArrayList<ArrayList<String>> arar = allDatabaseController.executeQuery(context, GlobalDatas.db_name, "SELECT `latitude`,`longitude` FROM `current_route` WHERE `point_id`='" + pointId + "';");
+                    if (arar.isEmpty()) {
+                        TetDebugUtil.e(pseudo_tag, "ERROR arar.isEmpty()");
+                        return;
+                    }
+                    ArrayList<String> ar = arar.get(0);
+                    if (ar.isEmpty()) {
+                        TetDebugUtil.e(pseudo_tag, "ERROR ar.isEmpty()");
+                        return;
+                    }
+                    String latitudeSt = ar.get(0);
+                    String longitudeSt = ar.get(1);
+                    Double latitude = Double.parseDouble(latitudeSt);
+                    Double longitude = Double.parseDouble(longitudeSt);
+                    mapsManipulation.navigateToLocation(latitude, longitude, appPackageName);
                 }
+
+            }
         });
 
         return convertView;

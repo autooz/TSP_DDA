@@ -33,6 +33,7 @@ public class AddNewSaleMan extends Activity implements View.OnClickListener {
     private String phone;
     private String descr;
     private String isActive;
+    private String who;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class AddNewSaleMan extends Activity implements View.OnClickListener {
         Thread.setDefaultUncaughtExceptionHandler(new CrashAppExceptionHandler(this));
         ThisApp.getInstance().adjastFontScale();
         TetDebugUtil.e(pseudo_tag, "!================= START " + pseudo_tag + "============");
+
+        who = getIntent().getStringExtra("who");
 
         setContentView(R.layout.activity_add_new_sale_man);
 
@@ -105,7 +108,14 @@ public class AddNewSaleMan extends Activity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), SaleManActivity.class));
-        this.finish();
+
+        if (who.equals(CreateNewRouteActivityAutonom.class.getSimpleName())){
+            startActivity(new Intent(getApplicationContext(),CreateNewRouteActivityAutonom.class));
+            this.finish();
+        } else {
+
+            startActivity(new Intent(getApplicationContext(), SaleManActivity.class));
+            this.finish();
+        }
     }
 }
