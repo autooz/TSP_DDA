@@ -24,20 +24,20 @@ public class workWithApkNaviOnDevice {
 
     public class appButtonExistencePakageClass {
         private int radioButtonID;
-        private RadioButton radioButton;
+       // private RadioButton radioButton;
         private String appPackageName;
         private String packageDescription;
 
-        public <T extends View> appButtonExistencePakageClass(RadioButton radioButton, String appPackageName, String packageDescription) {
-            this.radioButtonID = radioButton.getId();
-            this.radioButton = radioButton;
+        public <T extends View> appButtonExistencePakageClass(int radioButton, String appPackageName, String packageDescription) {
+            this.radioButtonID = radioButton;
+         //   this.radioButton = radioButton;
             this.appPackageName = appPackageName;
             this.packageDescription = packageDescription;
         }
 
-        private RadioButton getRadioBatoon() {
-            return radioButton;
-        }
+      //  private RadioButton getRadioBatoon() {
+//            return radioButton;
+//        }
         private int getRadioBatoonID() {
             return radioButtonID;
         }
@@ -75,26 +75,26 @@ public class workWithApkNaviOnDevice {
 
         appButtonExistencePakageClass cApsBitton;
 
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rbWaze), "com.waze", "Waze Navigation & Live Traffic");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rbWaze, "com.waze", "Waze Navigation & Live Traffic");
         GlobalDatas.appsSupportedList.add(cApsBitton);
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rbGoogleNavi), "com.google.android.apps.maps", "Google Maps");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rbGoogleNavi, "com.google.android.apps.maps", "Google Maps");
         GlobalDatas.appsSupportedList.add(cApsBitton);
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rbNavitel), "com.navitel", "NAVITEL");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rbNavitel, "com.navitel", "NAVITEL");
         GlobalDatas.appsSupportedList.add(cApsBitton);
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rbOsmand), "net.osmand", "OsmAnd - Maps & GPS Offline");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rbOsmand, "net.osmand", "OsmAnd - Maps & GPS Offline");
         GlobalDatas.appsSupportedList.add(cApsBitton);
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rbSygic), "com.sygic.aura", "Sygic GPS Navigation & Maps");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rbSygic, "com.sygic.aura", "Sygic GPS Navigation & Maps");
         GlobalDatas.appsSupportedList.add(cApsBitton);
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rbhHuawei), "com.huawei.maps.app", "Petal Maps - GPS & Navigation");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rbhHuawei, "com.huawei.maps.app", "Petal Maps - GPS & Navigation");
         GlobalDatas.appsSupportedList.add(cApsBitton);
         GlobalDatas.appsSupportedList.add(cApsBitton);
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rbTomtom), "com.tomtom.gplay.navapp", "TomTom Go Navigation");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rbTomtom, "com.tomtom.gplay.navapp", "TomTom Go Navigation");
         GlobalDatas.appsSupportedList.add(cApsBitton);
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rbMapsWithMe), "com.mapswithme.maps.pro", "MAPS.ME");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rbMapsWithMe, "com.mapswithme.maps.pro", "MAPS.ME");
         GlobalDatas.appsSupportedList.add(cApsBitton);
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rb2gis), "ru.dublgis.dgismobile", "2GIS");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rb2gis, "ru.dublgis.dgismobile", "2GIS");
         GlobalDatas.appsSupportedList.add(cApsBitton);
-        cApsBitton = new appButtonExistencePakageClass(activity.findViewById(R.id.rbIgo), "com.nng.igo.primong.igoworld", "IGO Navigation");
+        cApsBitton = new appButtonExistencePakageClass(R.id.rbIgo, "com.nng.igo.primong.igoworld", "IGO Navigation");
         GlobalDatas.appsSupportedList.add(cApsBitton);
     }
 
@@ -271,23 +271,23 @@ public class workWithApkNaviOnDevice {
         return radioButton;
     }
 
-    public RadioButton  getRadioButtonByPakageName(String appPackageName){
-        if (GlobalDatas.appsSupportedList.isEmpty()) {
-            TetDebugUtil.e(pseudo_tag, " ERROR GlobalDatas.appsSupportedList.isEmpty()");
-        }
-
-        int size = GlobalDatas.appsSupportedList.size();
-        RadioButton radioButton = null;
-        for (int i =0; size > i; i++){
-            appButtonExistencePakageClass cl = GlobalDatas.appsSupportedList.get(i);
-            if (appPackageName.equals(cl.getAppPackageName())){
-                radioButton =  cl.getRadioBatoon();
-            }
-        }
-
-        TetDebugUtil.e(pseudo_tag,"getPaketNameByRadioButton pak =["+radioButton.getId()+"]");
-        return radioButton;
-    }
+//    public RadioButton  getRadioButtonByPakageName(String appPackageName){
+//        if (GlobalDatas.appsSupportedList.isEmpty()) {
+//            TetDebugUtil.e(pseudo_tag, " ERROR GlobalDatas.appsSupportedList.isEmpty()");
+//        }
+//
+//        int size = GlobalDatas.appsSupportedList.size();
+//        RadioButton radioButton = null;
+//        for (int i =0; size > i; i++){
+//            appButtonExistencePakageClass cl = GlobalDatas.appsSupportedList.get(i);
+//            if (appPackageName.equals(cl.getAppPackageName())){
+//                radioButton =  cl.getRadioBatoon();
+//            }
+//        }
+//
+//        TetDebugUtil.e(pseudo_tag,"getPaketNameByRadioButton pak =["+radioButton.getId()+"]");
+//        return radioButton;
+//    }
 
     public String getPaketDecripByPackageName(String appPackageName) {
         if (GlobalDatas.appsSupportedList.isEmpty()) {

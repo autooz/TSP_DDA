@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.mapsforge.core.graphics.Color;
 
@@ -167,8 +170,8 @@ public class SettingsActivity extends Activity implements CompoundButton.OnCheck
         buttonSaveAll = (Button) findViewById(R.id.butSaveSettings);
         buttonSaveAll.setOnClickListener(this);
 
-
     }
+
 
     private void radiobuttonProcessing() {
 
@@ -224,12 +227,14 @@ public class SettingsActivity extends Activity implements CompoundButton.OnCheck
                     } else {
                         TetDebugUtil.e(pseudo_tag, "radiobuttonProcessing {appPackageName not null} and appPackageName = ["+appPackageName+"]");
                         if (!naviAppManipulation.isAppInstalled(appPackageName)){
-                            RadioButton rb = naviAppManipulation.getRadioButtonByPakageName(appPackageName);
+                            int radiobuttonID = naviAppManipulation.getRadioButtonIDByPakageName(appPackageName);
+                            RadioButton rb = (RadioButton) findViewById(radiobuttonID);
                             rb.setChecked(true);
                             //rb.setTextColor(getResources().getColor(R.color.colorAccent));
                             makeDialog(appPackageName);
                         } else {
-                            RadioButton rb = naviAppManipulation.getRadioButtonByPakageName(appPackageName);
+                            int radiobuttonID = naviAppManipulation.getRadioButtonIDByPakageName(appPackageName);
+                            RadioButton rb = (RadioButton) findViewById(radiobuttonID);
                             rb.setChecked(true);
                             //rb.setTextColor(getResources().getColor(R.color.tetGreen));
                         }
@@ -242,6 +247,11 @@ public class SettingsActivity extends Activity implements CompoundButton.OnCheck
             }
         } else {
             TetDebugUtil.e(pseudo_tag, "ELSE {GlobalDatas.navigationAPP.isEmpty()}");
+            if (naviAppManipulation.isAppInstalled(GlobalDatas.navigationAPP)){
+            int rbId = naviAppManipulation.getRadioButtonIDByPakageName(GlobalDatas.navigationAPP);
+                RadioButton rb = (RadioButton) findViewById(rbId);
+                rb.setChecked(true);
+            }
         }
 
     }
@@ -304,7 +314,17 @@ makeDialog(appPackageName);
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Логика для скрытия FAB при активации другого приложения
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Логика для показа FAB при активации другого приложения
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();

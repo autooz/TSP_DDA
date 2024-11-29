@@ -33,6 +33,7 @@ public class AdapterCurrentRoute extends BaseAdapter {
     private int itemPosition;
 
     private static class ViewHolder {
+
         TextView pointIdTextView;
         TextView point_fiel1_TextView;
         TextView point_fiel2_TextView;
@@ -87,34 +88,21 @@ public class AdapterCurrentRoute extends BaseAdapter {
 
         holder.pointIdTextView.setText(currentItem.get(0));  // point_id
         holder.point_fiel1_TextView.setText(currentItem.get(1));  // sales_name
-        holder.point_fiel2_TextView.setText(currentItem.get(2));  // zone
+        holder.point_fiel2_TextView.setText(currentItem.get(2));// zone
 
         holder.buttonGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String pointId = currentItem.get(0);
-                SharedPreferences sharedPrefs = ThisApp.getSharedPreferenceManager();
-                SharedPreferences.Editor editor = sharedPrefs.edit();
-                editor.putString("directPoint", pointId);
-                editor.apply();
-                String appPackageName = mapsTypeSeparator.getPreferedNavigationMap(activity);
+                Double latitude = Double.parseDouble(currentItem.get(3));
+                Double longitude = Double.parseDouble(currentItem.get(4));
+                TetDebugUtil.e(pseudo_tag,"directPoint pointId=["+pointId+"] latitude=["+latitude+"]  longitude=["+ longitude+"] GlobalDatas.navigationAPP=["+GlobalDatas.navigationAPP+"]");
+
                 workWithApkNaviOnDevice mapsManipulation = new workWithApkNaviOnDevice(activity);
-                if (mapsManipulation.isAppInstalled(appPackageName)) {
-                    ArrayList<ArrayList<String>> arar = allDatabaseController.executeQuery(context, GlobalDatas.db_name, "SELECT `latitude`,`longitude` FROM `current_route` WHERE `point_id`='" + pointId + "';");
-                    if (arar.isEmpty()) {
-                        TetDebugUtil.e(pseudo_tag, "ERROR arar.isEmpty()");
-                        return;
-                    }
-                    ArrayList<String> ar = arar.get(0);
-                    if (ar.isEmpty()) {
-                        TetDebugUtil.e(pseudo_tag, "ERROR ar.isEmpty()");
-                        return;
-                    }
-                    String latitudeSt = ar.get(0);
-                    String longitudeSt = ar.get(1);
-                    Double latitude = Double.parseDouble(latitudeSt);
-                    Double longitude = Double.parseDouble(longitudeSt);
-                    mapsManipulation.navigateToLocation(latitude, longitude, appPackageName);
+                if (mapsManipulation.isAppInstalled(GlobalDatas.navigationAPP)) {
+                    mapsManipulation.navigateToLocation(latitude, longitude, GlobalDatas.navigationAPP);
+                } else {
+                    TetDebugUtil.e(pseudo_tag, "Not installed ["+GlobalDatas.navigationAPP+"]");
                 }
 
             }

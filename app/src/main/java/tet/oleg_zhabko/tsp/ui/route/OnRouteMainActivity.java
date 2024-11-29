@@ -3,7 +3,10 @@ package tet.oleg_zhabko.tsp.ui.route;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,9 +20,8 @@ import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
 import tet.oleg_zhabko.tsp.datas.routeDbManipulation;
 import tet.oleg_zhabko.tsp.ui.autonom.AddNewPointOwnPoint;
-import tet.oleg_zhabko.tsp.ui.autonom.AddNewPointToCurrentRoute;
 import tet.oleg_zhabko.tsp.ui.autonom.ChoiceRouteActivityAutonom;
-import tet.oleg_zhabko.tsp.ui.autonom.ShowAndEditRoute;
+import tet.oleg_zhabko.tsp.ui.utils.FloatigButton.FloatingService;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterCurrentRoute;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterEditRoute;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
@@ -111,8 +113,9 @@ public class OnRouteMainActivity extends Activity {
 
             }
         });
-
     }
+
+
 
     private void toCorrectinRoute() {
 
@@ -145,7 +148,7 @@ public class OnRouteMainActivity extends Activity {
             butSaveCuren.setVisibility(View.GONE);
             butAddPoint.setVisibility(View.GONE);
         }
-        ArrayList<ArrayList<String>> dataList = allDatabaseController.executeQuery(this, GlobalDatas.db_name, "SELECT point_id, zone, point_owner FROM current_route");
+        ArrayList<ArrayList<String>> dataList = allDatabaseController.executeQuery(this, GlobalDatas.db_name, "SELECT point_id, zone, point_owner, latitude, longitude FROM current_route");
 
         new ShowAllInArrayList(pseudo_tag, dataList);
 
@@ -167,8 +170,29 @@ public class OnRouteMainActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(getApplicationContext(),FloatingService.class));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(context)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                intent.setData(Uri.parse("package:" + context.getPackageName()));
+                startActivity(intent);
+            }
+        }
+        TetDebugUtil.e(pseudo_tag,"STARTING Fservice");
+        startService(new Intent(getApplicationContext(),FloatingService.class));
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
+        TetDebugUtil.e(pseudo_tag,"STOPING Fservice");
         startActivity(new Intent(getApplicationContext(), ChoiceRouteActivityAutonom.class));
         this.finish();
     }

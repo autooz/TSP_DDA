@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.j256.ormlite.stmt.query.In;
+
+import java.util.ArrayList;
+
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
 import tet.oleg_zhabko.tsp.datas.databaseCreaterSQL;
 import tet.oleg_zhabko.tsp.ui.MainActivityAutonom;
@@ -61,7 +65,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         } else {
             ThisApp.getInstance().adjastFontScale();
         }
-
+        setGlobalDatas_navigationAPP();
 
     }
 
@@ -69,7 +73,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         Intent intent = null;
         int id = v.getId();
-
         if (id == R.id.autonomiusly) {
             intent = new Intent(getApplicationContext(), MainActivityAutonom.class);
         } else if (id == R.id.wiaserver) {
@@ -82,6 +85,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         startActivity(intent);
         //this.finish();
+    }
+
+    private void setGlobalDatas_navigationAPP() {
+        if (GlobalDatas.appsSupportedList.isEmpty()){
+            new workWithApkNaviOnDevice(this);
+        }
+        ArrayList<ArrayList<String>> arar = allDbController.executeQuery(getApplicationContext(), GlobalDatas.db_name, "SELECT value FROM settings WHERE variable='nav_map'");
+        Intent intent = null;
+        if (arar.isEmpty()) {
+            TetDebugUtil.e(pseudo_tag, "ERROR arar.isEmpty()");
+        }
+        ArrayList<String> ar = arar.get(0);
+        if (ar.isEmpty()) {
+            TetDebugUtil.e(pseudo_tag, "ERROR ar.isEmpty()");
+        }
+        String appPackageName = ar.get(0);
+        if (appPackageName.isEmpty()){
+            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+        }
+        GlobalDatas.navigationAPP = appPackageName;
     }
 
 

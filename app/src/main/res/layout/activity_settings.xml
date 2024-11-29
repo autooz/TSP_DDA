@@ -289,48 +289,6 @@
                 android:text="@string/save" />
 
         </LinearLayout>
-
-        <!--  <TextView
-            android:id="@+id/titleLoginInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="center"
-            android:text="@string/monopolyLoginInfo"
-
-            android:textStyle="bold|italic" />
-
-        <CheckBox
-            android:id="@+id/monopoly"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/local" />
-
-        <TextView
-            android:id="@+id/titleActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center"
-            android:text="@string/savePassword"
-            android:textSize="15sp" />
-
-        <Button
-            android:id="@+id/buttonLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:onClick="loginIn"
-            android:text="@string/ok" /> -->
-
     </LinearLayout>
 
 </ScrollView>
