@@ -12,16 +12,19 @@ package tet.oleg_zhabko.tsp;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.LocaleList;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
@@ -29,6 +32,8 @@ import androidx.annotation.Nullable;
 
 import java.util.Locale;
 
+import tet.oleg_zhabko.tsp.ui.utils.CheckCanDrawOverlays;
+import tet.oleg_zhabko.tsp.ui.utils.FloatigButton.FloatingButtonService;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 import tet.oleg_zhabko.tsp.ui.utils.SettingsUtils;
 
@@ -36,10 +41,11 @@ public class ThisApp extends Application {
     public static int API;
     public static AudioManager appAudioManager;
     private static ThisApp instance;
-    private static String pseudo_tag = "ThisApp.getInstance().class";
+    private static String pseudo_tag = "ThisApp instance";
     private static MediaPlayer appMediaPlayer;
     private static SharedPreferences preferenceManager;
     private static String appLanguage;
+    private static boolean isAppInForeground = true;
 
 
     public static ThisApp getInstance() {
@@ -156,9 +162,11 @@ public class ThisApp extends Application {
 
     @Override
     public void onCreate() {
+        super.onCreate();
         instance = this;
         API = ThisApp.getInstance().API;
-        this.registerActivityLifecycleCallbacks(new MyActivityLifecycleCallbacks());
+        //this.registerActivityLifecycleCallbacks(new MyActivityLifecycleCallbacks());
+
 
         if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.P){
             preferenceManager = this.getSharedPreferences("shared_preference", this.MODE_PRIVATE); getSharedPreferences(getDefaultSharedPreferencesName(this), getDefaultSharedPreferencesMode());
@@ -170,9 +178,75 @@ public class ThisApp extends Application {
         }
 
         setThisAppLocale(null);
+        // Activity status tracking
+        activityTracking();
 
-        super.onCreate();
     }
+
+    private void activityTracking() {
+        instance.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityResumed(Activity activity) {
+                TetDebugUtil.e(pseudo_tag," onActivityResumed "+activity.getClass().getSimpleName()+"");
+                isAppInForeground = true;
+                stopFloatingButtonService();
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+                TetDebugUtil.e(pseudo_tag," onActivityPaused "+activity.getClass().getSimpleName()+" ");
+                isAppInForeground = false;
+                startFloatingButtonService();
+            }
+
+            // Optional lifecycle methods that can be left empty
+            @Override public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                TetDebugUtil.e(pseudo_tag, " onActivityCreated ["+activity.getClass().getSimpleName()+"] ");
+            }
+            @Override public void onActivityStarted(Activity activity) {
+                TetDebugUtil.e(pseudo_tag, " onActivityStarted ["+activity.getClass().getSimpleName()+"] ");
+            }
+            @Override public void onActivityStopped(Activity activity) {
+                TetDebugUtil.e(pseudo_tag, " onActivityStoped ["+activity.getClass().getSimpleName()+"] ");
+            }
+            @Override public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+                TetDebugUtil.e(pseudo_tag, " onActivitySaveInstance ["+activity.getClass().getSimpleName()+"] ");
+            }
+            @Override public void onActivityDestroyed(Activity activity) {
+                TetDebugUtil.e(pseudo_tag, " onActivityestoyed ["+activity.getClass().getSimpleName()+"] ");
+            }
+        });
+
+    }
+
+    public static boolean isAppInForeground() {
+        return isAppInForeground;
+    }
+
+    private void startFloatingButtonService() {
+            Context context = getApplicationContext();
+            if (!CheckCanDrawOverlays.canDrawOverlays(context)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                intent.setData(Uri.parse("package:" + context.getPackageName()));
+                startActivity(intent);
+            } else {
+
+            }
+
+        if (!isAppInForeground) {
+            Intent intent = new Intent(this, FloatingButtonService.class);
+            startService(intent);
+        }
+    }
+
+    private void stopFloatingButtonService() {
+        if (isAppInForeground) {
+            Intent intent = new Intent(this, FloatingButtonService.class);
+            stopService(intent);
+        }
+    }
+
+
 
     public String getDisplayLanguage() {
         Locale.getDefault().getDisplayLanguage();
@@ -212,5 +286,9 @@ public class ThisApp extends Application {
             TetDebugUtil.d("TAG", "onActivityStopped:" + activity.getLocalClassName());
         }
     }
+
+
+
+
 
 }

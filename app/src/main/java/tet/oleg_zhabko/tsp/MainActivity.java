@@ -48,6 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         closApp_button = (Button) findViewById(R.id.closeApp);
         closApp_button.setOnClickListener(this);
         debug_button = (Button) findViewById(R.id.debugApp);
+        debug_button.setVisibility(View.GONE);
         debug_button.setOnClickListener(this);
 
 

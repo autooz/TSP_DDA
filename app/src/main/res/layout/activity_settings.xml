@@ -182,7 +182,6 @@
                         android:layout_height="wrap_content"
                         android:text="OSM On Line" />
 
-
                     <RadioButton
                         android:id="@+id/rbGoogleOffLine"
                         android:layout_width="wrap_content"
@@ -199,6 +198,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Google WebView" />
+                    -->
                 </RadioGroup>
 
             </TableRow>

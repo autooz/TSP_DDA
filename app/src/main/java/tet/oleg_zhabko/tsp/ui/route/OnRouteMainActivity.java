@@ -21,7 +21,7 @@ import tet.oleg_zhabko.tsp.datas.GlobalDatas;
 import tet.oleg_zhabko.tsp.datas.routeDbManipulation;
 import tet.oleg_zhabko.tsp.ui.autonom.AddNewPointOwnPoint;
 import tet.oleg_zhabko.tsp.ui.autonom.ChoiceRouteActivityAutonom;
-import tet.oleg_zhabko.tsp.ui.utils.FloatigButton.FloatingService;
+import tet.oleg_zhabko.tsp.ui.utils.FloatigButton.FloatingButtonService;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterCurrentRoute;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterEditRoute;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
@@ -48,18 +48,25 @@ public class OnRouteMainActivity extends Activity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Thread.setDefaultUncaughtExceptionHandler(new CrashAppExceptionHandler(this));
         ThisApp.getInstance().adjastFontScale();
         TetDebugUtil.e(pseudo_tag, "!================= START " + pseudo_tag + "============");
 
         setContentView(R.layout.activity_on_route_main);
+        String organisation = new String();
+        String idRoute = new String();
+        String routeMame = new String();
 
         Bundle bundle = getIntent().getExtras();
-        String organisation = bundle.getString("org");
-        String idRoute = bundle.getString("id");
-        String routeMame = bundle.getString("route");
+        try {
+        organisation = bundle.getString("org");
+        idRoute = bundle.getString("id");
+        routeMame = bundle.getString("route");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         listViewCarrentR = (ListView) findViewById(R.id.listViewCarrentRoute);
 
@@ -172,7 +179,7 @@ public class OnRouteMainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        stopService(new Intent(getApplicationContext(),FloatingService.class));
+     //   stopService(new Intent(getApplicationContext(), FloatingButtonService.class));
     }
 
     @Override
@@ -186,7 +193,7 @@ public class OnRouteMainActivity extends Activity {
             }
         }
         TetDebugUtil.e(pseudo_tag,"STARTING Fservice");
-        startService(new Intent(getApplicationContext(),FloatingService.class));
+      //  startService(new Intent(getApplicationContext(), FloatingButtonService.class));
     }
 
     @Override

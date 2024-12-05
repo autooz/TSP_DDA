@@ -48,6 +48,7 @@ public class SettingsActivity extends Activity implements CompoundButton.OnCheck
     private RadioButton rButtonWaze;
     private RadioButton rButtonGoogleOffLine;
     private RadioButton rButtonGoogleNavi;
+    private RadioButton rButtonrbGoogleMaps;
     private RadioButton rButtonGoogleWebView;
     private RadioGroup rGroupe;
     private RadioGroup rGroupeNavi;
@@ -77,12 +78,21 @@ public class SettingsActivity extends Activity implements CompoundButton.OnCheck
         rGroupe = (RadioGroup) findViewById(R.id.rGroupeMaps);
         rGroupeNavi = (RadioGroup) findViewById(R.id.rGroupeNawigation);
 
-        rButtonOsmOfline = (RadioButton) findViewById(R.id.rbOsmOffLine);
         rButtonOsmOnLine = (RadioButton) findViewById(R.id.rbOsmOnLine);
+
+        rButtonOsmOfline = (RadioButton) findViewById(R.id.rbOsmOffLine);
+        rButtonOsmOfline.setVisibility(View.GONE);
+
         rButtonWaze = (RadioButton) findViewById(R.id.rbWaze);
-        rButtonGoogleOffLine = (RadioButton) findViewById(R.id.rbOsmOffLine);
+        rButtonWaze.setVisibility(View.GONE);
+        rButtonGoogleOffLine = (RadioButton) findViewById(R.id.rbGoogleOffLine);
+        rButtonGoogleOffLine.setVisibility(View.GONE);
         rButtonGoogleNavi = (RadioButton) findViewById(R.id.rbGoogleNavi);
-        rButtonGoogleWebView = (RadioButton) findViewById(R.id.rbGoogleWebView);
+        rButtonGoogleNavi.setVisibility(View.GONE);
+        rButtonrbGoogleMaps = (RadioButton) findViewById(R.id.rbGoogleMaps);
+        rButtonrbGoogleMaps.setVisibility(View.GONE);
+                rButtonGoogleWebView = (RadioButton) findViewById(R.id.rbGoogleWebView);
+        rButtonGoogleWebView.setVisibility(View.GONE);
 
         radiobuttonProcessing();
 
