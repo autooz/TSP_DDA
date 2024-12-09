@@ -12,7 +12,7 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
 import tet.oleg_zhabko.tsp.R;
-import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityOsmOnLineAddPoint;
+import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityOsmOnLineAddPoint;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
 public class AddPointDialogClass extends Dialog implements android.view.View.OnClickListener {

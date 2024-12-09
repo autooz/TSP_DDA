@@ -6,17 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.j256.ormlite.stmt.query.In;
-
 import java.util.ArrayList;
 
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
+import tet.oleg_zhabko.tsp.datas.addDemoDatas;
 import tet.oleg_zhabko.tsp.datas.databaseCreaterSQL;
 import tet.oleg_zhabko.tsp.ui.MainActivityAutonom;
 import tet.oleg_zhabko.tsp.ui.MainActivityWiaServer;
 import tet.oleg_zhabko.tsp.ui.SettingsActivity;
-import tet.oleg_zhabko.tsp.ui.utils.appAndMaps.workWithApkNaviOnDevice;
-import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityOsmOnLineAddPoint;
+import tet.oleg_zhabko.tsp.ui.utils.appAndNaviMaps.workWithApkNaviOnDevice;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
@@ -48,7 +46,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         closApp_button = (Button) findViewById(R.id.closeApp);
         closApp_button.setOnClickListener(this);
         debug_button = (Button) findViewById(R.id.debugApp);
-        debug_button.setVisibility(View.GONE);
+       // debug_button.setVisibility(View.GONE);
         debug_button.setOnClickListener(this);
 
 
@@ -82,9 +80,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
             //  intent = new Intent(getApplicationContext(), MainActivityDataPickerView.class);
             finish();
         } else if (id == R.id.debugApp){
-           intent = new Intent(getApplicationContext(), SettingsActivity.class);
+            new addDemoDatas().insertDatasToDb(GlobalDatas.db_name);
         }
-        startActivity(intent);
+        if (intent != null) {
+            startActivity(intent);
+        }
         //this.finish();
     }
 
@@ -94,27 +94,28 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         ArrayList<ArrayList<String>> arar = allDbController.executeQuery(getApplicationContext(), GlobalDatas.db_name, "SELECT value FROM settings WHERE variable='nav_map'");
         Intent intent = null;
-        if (arar.isEmpty()) {
+        if (!arar.isEmpty()) {
             TetDebugUtil.e(pseudo_tag, "ERROR arar.isEmpty()");
-        }
+
         ArrayList<String> ar = arar.get(0);
         if (ar.isEmpty()) {
             TetDebugUtil.e(pseudo_tag, "ERROR ar.isEmpty()");
         }
         String appPackageName = ar.get(0);
-        if (appPackageName.isEmpty()){
+        if (appPackageName == null || appPackageName.isEmpty() || appPackageName.equals(null)){
             startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
         }
         GlobalDatas.navigationAPP = appPackageName;
+        }
     }
 
 
     private boolean createDB(String db_name) {
         boolean res = false;
         TetDebugUtil.e(pseudo_tag, "Make createDB");
-        // allDbController.createNewDb(this,db_name);
+         allDbController.createNewDb(this,db_name);
         new databaseCreaterSQL().insertDatasToDb(db_name);
-        String stringQuery = new databaseCreaterSQL().insertDatasToDb(db_name);
+
 
         if (allDbController.isDbCreated(this, db_name)) {
  res = true;

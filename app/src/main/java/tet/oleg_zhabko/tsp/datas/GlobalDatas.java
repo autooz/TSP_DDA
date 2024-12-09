@@ -5,11 +5,9 @@ import android.content.Context;
 import org.osmdroid.util.GeoPoint;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import tet.oleg_zhabko.tsp.ThisApp;
-import tet.oleg_zhabko.tsp.ui.utils.appAndMaps.workWithApkNaviOnDevice;
-import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.osmTools.osmToolsAddNecessaryItems;
+import tet.oleg_zhabko.tsp.ui.utils.appAndNaviMaps.workWithApkNaviOnDevice;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 

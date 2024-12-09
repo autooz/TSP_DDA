@@ -12,6 +12,7 @@ import android.widget.Toast;
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
+import tet.oleg_zhabko.tsp.ui.MainActivityAutonom;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
@@ -23,7 +24,7 @@ public class AddNewOrganisation extends Activity implements View.OnClickListener
     private EditText newDescr;
     private Button buttonSave;
     private Button buttonDoNotSave;
-    private String orgName;
+    private String orgName = new String();
     private String phone;
     private String descr;
 
@@ -87,7 +88,11 @@ public class AddNewOrganisation extends Activity implements View.OnClickListener
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), CreateNewRouteActivityAutonom.class));
+        if (orgName == null | orgName.isEmpty()){
+            startActivity(new Intent(getApplicationContext(), MainActivityAutonom.class));
+        } else {
+            startActivity(new Intent(getApplicationContext(), CreateNewRouteActivityAutonom.class));
+        }
         this.finish();
     }
 }

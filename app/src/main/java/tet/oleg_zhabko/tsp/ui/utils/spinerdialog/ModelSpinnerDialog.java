@@ -29,10 +29,9 @@ import tet.oleg_zhabko.tsp.ui.autonom.AddNewZone;
 import tet.oleg_zhabko.tsp.ui.autonom.CreateNewRouteActivityAutonom;
 import tet.oleg_zhabko.tsp.ui.autonom.SaleManActivity;
 import tet.oleg_zhabko.tsp.ui.autonom.ZoneActivity;
-import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityOsmOnLineAddPoint;
+import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityOsmOnLineAddPoint;
 import tet.oleg_zhabko.tsp.ui.utils.AllertOneAndTwoAndThreeButton;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
-import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.ShowAllInArrayList;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
 // Copyright:  Copyright (c) 2008-2024 Best LLC & Oleg Zhabko. All rights reserved.

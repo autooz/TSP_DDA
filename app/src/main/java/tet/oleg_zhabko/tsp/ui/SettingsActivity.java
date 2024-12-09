@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,21 +13,17 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.mapsforge.core.graphics.Color;
-
 import java.util.ArrayList;
 
 import tet.oleg_zhabko.tsp.MainActivity;
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
-import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityGoogleMapWebView;
-import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityOsmOnline;
+import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityGoogleMapWebView;
+import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityOsmOnline;
 import tet.oleg_zhabko.tsp.ui.utils.AllertOneAndTwoAndThreeButton;
 import tet.oleg_zhabko.tsp.ui.utils.SettingsUtils;
-import tet.oleg_zhabko.tsp.ui.utils.appAndMaps.workWithApkNaviOnDevice;
+import tet.oleg_zhabko.tsp.ui.utils.appAndNaviMaps.workWithApkNaviOnDevice;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
@@ -84,7 +79,7 @@ public class SettingsActivity extends Activity implements CompoundButton.OnCheck
         rButtonOsmOfline.setVisibility(View.GONE);
 
         rButtonWaze = (RadioButton) findViewById(R.id.rbWaze);
-        rButtonWaze.setVisibility(View.GONE);
+//        rButtonWaze.setVisibility(View.GONE);
         rButtonGoogleOffLine = (RadioButton) findViewById(R.id.rbGoogleOffLine);
         rButtonGoogleOffLine.setVisibility(View.GONE);
         rButtonGoogleNavi = (RadioButton) findViewById(R.id.rbGoogleNavi);

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
-import tet.oleg_zhabko.tsp.ui.utils.points_and_maps.ActivityOsmOnLineAddPoint;
+import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityOsmOnLineAddPoint;
 import tet.oleg_zhabko.tsp.ui.utils.spinerdialog.ModelSpinnerDialog;
 import tet.oleg_zhabko.tsp.ui.utils.spinerdialog.SpinerDialog;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;

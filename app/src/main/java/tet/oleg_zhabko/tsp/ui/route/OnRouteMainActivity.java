@@ -21,7 +21,6 @@ import tet.oleg_zhabko.tsp.datas.GlobalDatas;
 import tet.oleg_zhabko.tsp.datas.routeDbManipulation;
 import tet.oleg_zhabko.tsp.ui.autonom.AddNewPointOwnPoint;
 import tet.oleg_zhabko.tsp.ui.autonom.ChoiceRouteActivityAutonom;
-import tet.oleg_zhabko.tsp.ui.utils.FloatigButton.FloatingButtonService;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterCurrentRoute;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterEditRoute;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
@@ -61,9 +60,9 @@ public class OnRouteMainActivity extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         try {
-        organisation = bundle.getString("org");
-        idRoute = bundle.getString("id");
-        routeMame = bundle.getString("route");
+        organisation = bundle.getString("org", new String());
+        idRoute = bundle.getString("id", new String());
+        routeMame = bundle.getString("route", new String());
         } catch (Exception e){
             e.printStackTrace();
         }

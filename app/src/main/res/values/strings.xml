@@ -102,11 +102,11 @@
     <string name="b_fromList">From existing</string>
     <string name="txtEdditionPointAdd">To add to the list of route points, \n select where to add a new point.</string>
     <string name="close">CLOSE</string>
-    <string name="titleInstallApp">УСТАНОВКА APP</string>
-    <string name="txtInstallAppQuest">Вы хотите установить на свой девайс:</string>
-    <string name="txtPreferredEdiorMaps">Предпочитаемая карта редактирования</string>
-    <string name="btnTxtCreateToRoute">Создать маршрут</string>
-    <string name="tvNewSaleM">Новый представитель</string>
-    <string name="tvNewZon">Новая зона</string>
+    <string name="titleInstallApp">APP INSTALLATION</string>
+    <string name="txtInstallAppQuest">You want to install on your device:</string>
+    <string name="txtPreferredEdiorMaps">Preferred Edit Map</string>
+    <string name="btnTxtCreateToRoute">Create route</string>
+    <string name="tvNewSaleM">New Representative</string>
+    <string name="tvNewZon">New zone</string>
 
 </resources>

@@ -9,6 +9,8 @@ package tet.oleg_zhabko.tsp;
 //
 
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -32,10 +34,13 @@ import androidx.annotation.Nullable;
 
 import java.util.Locale;
 
+import tet.oleg_zhabko.tsp.ui.autonom.AddNewPointToCurrentRoute;
+import tet.oleg_zhabko.tsp.ui.route.OnRouteMainActivity;
 import tet.oleg_zhabko.tsp.ui.utils.CheckCanDrawOverlays;
 import tet.oleg_zhabko.tsp.ui.utils.FloatigButton.FloatingButtonService;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 import tet.oleg_zhabko.tsp.ui.utils.SettingsUtils;
+import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityPointInfo;
 
 public class ThisApp extends Application {
     public static int API;
@@ -165,7 +170,7 @@ public class ThisApp extends Application {
         super.onCreate();
         instance = this;
         API = ThisApp.getInstance().API;
-        //this.registerActivityLifecycleCallbacks(new MyActivityLifecycleCallbacks());
+        this.registerActivityLifecycleCallbacks(new MyActivityLifecycleCallbacks());
 
 
         if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.P){
@@ -179,11 +184,11 @@ public class ThisApp extends Application {
 
         setThisAppLocale(null);
         // Activity status tracking
-        activityTracking();
+        activityLifeCycleMonitor();
 
     }
 
-    private void activityTracking() {
+    private void activityLifeCycleMonitor() {
         instance.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityResumed(Activity activity) {
@@ -196,7 +201,8 @@ public class ThisApp extends Application {
             public void onActivityPaused(Activity activity) {
                 TetDebugUtil.e(pseudo_tag," onActivityPaused "+activity.getClass().getSimpleName()+" ");
                 isAppInForeground = false;
-                startFloatingButtonService();
+                String simpleName = activity.getClass().getSimpleName();
+                startFloatingButtonService(simpleName);
             }
 
             // Optional lifecycle methods that can be left empty
@@ -223,19 +229,27 @@ public class ThisApp extends Application {
         return isAppInForeground;
     }
 
-    private void startFloatingButtonService() {
+    private void startFloatingButtonService(String simpleName) {
+        boolean doIt = false;
             Context context = getApplicationContext();
             if (!CheckCanDrawOverlays.canDrawOverlays(context)) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
                 intent.setData(Uri.parse("package:" + context.getPackageName()));
+                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-            } else {
+            } else if (!isAppInForeground) {
+                if ( simpleName.equals(OnRouteMainActivity.class.getSimpleName())){
+                    doIt = true;
+                } else if (simpleName.equals(AddNewPointToCurrentRoute.class.getSimpleName())) {
+                    doIt = true;
+                } else if (simpleName.equals(ActivityPointInfo.class.getSimpleName())) {
+                    doIt = true;
+                }
 
-            }
-
-        if (!isAppInForeground) {
-            Intent intent = new Intent(this, FloatingButtonService.class);
-            startService(intent);
+                if (doIt) {
+                    Intent intent = new Intent(this, FloatingButtonService.class);
+                    startService(intent);
+                }
         }
     }
 

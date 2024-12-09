@@ -2,8 +2,6 @@ package tet.oleg_zhabko.tsp.ui.utils.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +12,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import tet.oleg_zhabko.tsp.R;
-import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
-import tet.oleg_zhabko.tsp.ui.utils.appAndMaps.workWithApkNaviOnDevice;
+import tet.oleg_zhabko.tsp.ui.utils.appAndNaviMaps.workWithApkNaviOnDevice;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
-import tet.oleg_zhabko.tsp.ui.utils.mapsTypeSeparator;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
 public class AdapterCurrentRoute extends BaseAdapter {
@@ -96,7 +92,6 @@ public class AdapterCurrentRoute extends BaseAdapter {
                 String pointId = currentItem.get(0);
                 Double latitude = Double.parseDouble(currentItem.get(3));
                 Double longitude = Double.parseDouble(currentItem.get(4));
-                TetDebugUtil.e(pseudo_tag,"directPoint pointId=["+pointId+"] latitude=["+latitude+"]  longitude=["+ longitude+"] GlobalDatas.navigationAPP=["+GlobalDatas.navigationAPP+"]");
 
                 workWithApkNaviOnDevice mapsManipulation = new workWithApkNaviOnDevice(activity);
                 if (mapsManipulation.isAppInstalled(GlobalDatas.navigationAPP)) {
