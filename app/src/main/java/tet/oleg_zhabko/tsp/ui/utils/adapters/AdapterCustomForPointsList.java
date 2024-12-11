@@ -1,5 +1,7 @@
 package tet.oleg_zhabko.tsp.ui.utils.adapters;
 
+import static java.lang.System.exit;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,14 +21,15 @@ import tet.oleg_zhabko.tsp.ui.utils.AllertDialogCallbackInterface;
 import tet.oleg_zhabko.tsp.ui.utils.AllertOneAndTwoAndThreeButton;
 import tet.oleg_zhabko.tsp.ui.utils.CheckIsItemDubbed;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.ShowAllInArrayList;
+import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.ShowlongLargeString;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
 public class AdapterCustomForPointsList extends BaseAdapter implements AllertDialogCallbackInterface<String> {
 
     private static final String pseudo_tag = AdapterCustomForPointsList.class.getSimpleName();
     private final ArrayList<ArrayList<String>> dataList;
-//    private final ArrayList<ArrayList<String>> pointChecked = new ArrayList<>();  // Список для сохранения отмеченных элементов
-    boolean[] checkedStates;  // Массив состояний чекбоксов
+//    private final ArrayList<ArrayList<String>> pointChecked = new ArrayList<>();  // List for saving marked items
+    boolean[] checkedStates;  // Array of checkbox states
     private final LayoutInflater inflater;
     private final Activity activity;
     private Context context;
@@ -42,10 +45,14 @@ public class AdapterCustomForPointsList extends BaseAdapter implements AllertDia
 
 
     public AdapterCustomForPointsList(Activity activity, ArrayList<ArrayList<String>> dataList) {
+        TetDebugUtil.e(pseudo_tag," Doing AdapterCustomForPointsList");
+
+        new ShowAllInArrayList(pseudo_tag,dataList);
+
         holder = null;
        // boolean[] checkedStates = null;
         this.dataList = dataList;
-        checkedStates = new boolean[dataList.size()];  // Инициализация массива для состояний чекбоксов
+        checkedStates = new boolean[dataList.size()];  // Initializing an array for checkbox states
         this.activity = activity;
        context = activity.getApplicationContext();
         this.inflater = LayoutInflater.from(context);
@@ -53,6 +60,7 @@ public class AdapterCustomForPointsList extends BaseAdapter implements AllertDia
 
     @Override
     public int getCount() {
+        TetDebugUtil.e(pseudo_tag,"dataList.size() = "+dataList.size()+"");
         return dataList.size();
     }
 
@@ -88,10 +96,12 @@ public class AdapterCustomForPointsList extends BaseAdapter implements AllertDia
         ArrayList<String> currentItem = dataList.get(position);
 
 
+        new ShowAllInArrayList(pseudo_tag,currentItem);
+
         holder.pointIdTextView.setText(currentItem.get(0));  // point_id
         holder.point_fiel1_TextView.setText(currentItem.get(1));  // sales_name
         holder.point_fiel2_TextView.setText(currentItem.get(2));  // zone
-        // Устанавливаем состояние чекбокса
+        // Setting the checkbox state
         if (CheckIsItemDubbed.checkIsDubbed(GlobalDatas.pointChecked,currentItem)){
             checkedStates[position] = true;
            // holder.checkBox.setChecked(true);
@@ -105,10 +115,10 @@ public class AdapterCustomForPointsList extends BaseAdapter implements AllertDia
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                checkedStates[position] = isChecked;  // Сохраняем состояние чекбокса
+                checkedStates[position] = isChecked;  // Saving the state of the checkbox
 
                 TetDebugUtil.e(pseudo_tag, "onCheckedChanged position=[" + position+ "]  currentItem=["+ currentItem+"]");
-                // Если чекбокс отмечен - добавляем элемент в pointChecked, иначе удаляем
+                // If the checkbox is checked, add the element to pointChecked, otherwise delete it
                 if (isChecked) {
                     if (CheckIsItemDubbed.checkIsDubbed(GlobalDatas.pointChecked, currentItem)) {
                         String title = context.getResources().getString(R.string.worning).toString();

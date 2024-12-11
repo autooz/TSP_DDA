@@ -67,11 +67,12 @@ public class SpinerDialog {
                 String who = activity.getClass().getSimpleName();
                 //allDbController.executeQuery(App, GlobalDatas.db_name,"UPDATE zones SET is_active='false' WHERE org_id="+GlobalDatas.orgId+"");
                 if (who.equals(ZoneActivity.class.getSimpleName())) {
-                    ArrayList<ArrayList<String>> aRR = allDbController.executeQuery(App, GlobalDatas.db_name, "SELECT zone_id WROM zones WHERE zone_name='" + item + "' AND org_id=" + GlobalDatas.orgId + "");
+                    ArrayList<ArrayList<String>> aRR = allDbController.executeQuery(App, GlobalDatas.db_name, "SELECT zone_id FROM zones WHERE zone_name='" + item + "' AND org_id=" + GlobalDatas.orgId + "");
                     if (!aRR.isEmpty()){
                         ArrayList<String> aR = aRR.get(0);
                         if(!aR.isEmpty()){
-                            GlobalDatas.orgId = aR.get(0);
+                            GlobalDatas.zoneId = aR.get(0);
+                            TetDebugUtil.e(pseudo_tag, "Write GlobalDatas.orgId = "+GlobalDatas.orgId+"");
                         }
                     }
                     vActivTv.setText(item);

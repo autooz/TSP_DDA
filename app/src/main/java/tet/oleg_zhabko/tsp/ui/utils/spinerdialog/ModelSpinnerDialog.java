@@ -32,6 +32,8 @@ import tet.oleg_zhabko.tsp.ui.autonom.ZoneActivity;
 import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityOsmOnLineAddPoint;
 import tet.oleg_zhabko.tsp.ui.utils.AllertOneAndTwoAndThreeButton;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
+import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.ShowAllInArrayList;
+import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.ShowlongLargeString;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
 // Copyright:  Copyright (c) 2008-2024 Best LLC & Oleg Zhabko. All rights reserved.
@@ -42,8 +44,8 @@ import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 //
 public class ModelSpinnerDialog {
 
-    private  Activity activity;
-    String pseudo_tag=ModelSpinnerDialog.class.getSimpleName();
+    private Activity activity;
+    String pseudo_tag = ModelSpinnerDialog.class.getSimpleName();
     ArrayList<String> items;
     Activity context;
     String dTitle, closeTitle = "Close";
@@ -54,16 +56,16 @@ public class ModelSpinnerDialog {
     boolean cancellable = false;
     boolean showKeyboard = false;
     boolean useContainsFilter = false;
-    int titleColor,searchIconColor,searchTextColor,itemColor,itemDividerColor,closeColor;
+    int titleColor, searchIconColor, searchTextColor, itemColor, itemDividerColor, closeColor;
     AllDatabaseController allDbController = AllDatabaseController.getSingleControllerInstance();
 
-    private void initColor(Context context){
-        this.titleColor=context.getResources().getColor(R.color.black);
-        this.searchIconColor=context.getResources().getColor(R.color.black);
-        this.searchTextColor=context.getResources().getColor(R.color.black);
-        this.itemColor=context.getResources().getColor(R.color.black);
-        this.closeColor=context.getResources().getColor(R.color.black);
-        this.itemDividerColor=context.getResources().getColor(R.color.light_gray);
+    private void initColor(Context context) {
+        this.titleColor = context.getResources().getColor(R.color.black);
+        this.searchIconColor = context.getResources().getColor(R.color.black);
+        this.searchTextColor = context.getResources().getColor(R.color.black);
+        this.itemColor = context.getResources().getColor(R.color.black);
+        this.closeColor = context.getResources().getColor(R.color.black);
+        this.itemDividerColor = context.getResources().getColor(R.color.light_gray);
     }
 
     public ModelSpinnerDialog(Activity activity, ArrayList<String> items, String dialogTitle) {
@@ -108,7 +110,7 @@ public class ModelSpinnerDialog {
         View v = context.getLayoutInflater().inflate(R.layout.dialog_organisation_layout, null);
         TextView rippleViewClose = (TextView) v.findViewById(R.id.close);
         TextView title = (TextView) v.findViewById(R.id.spinerTitle);
-        ImageView searchIcon=(ImageView) v.findViewById(R.id.searchIcon);
+        ImageView searchIcon = (ImageView) v.findViewById(R.id.searchIcon);
         rippleViewClose.setText(closeTitle);
         title.setText(dTitle);
         final ListView listView = (ListView) v.findViewById(R.id.list);
@@ -131,10 +133,11 @@ public class ModelSpinnerDialog {
 //        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.items_view, items);
         final AdapterSpinerDialogWithFilter<String> adapter = new AdapterSpinerDialogWithFilter<String>(context, R.layout.items_view, items) {
 
-            @Override@NonNull
+            @Override
+            @NonNull
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
-                TextView text1=view.findViewById(R.id.textItemName);
+                TextView text1 = view.findViewById(R.id.textItemName);
                 text1.setTextColor(itemColor);
                 return view;
             }
@@ -153,52 +156,61 @@ public class ModelSpinnerDialog {
                 for (int j = 0; j < items.size(); j++) {
                     if (t.getText().toString().equalsIgnoreCase(items.get(j).toString())) {
                         pos = j;
-                        TetDebugUtil.e(pseudo_tag, "onItemClick item "+items.get(j)+"  pos = "+pos+"");
+                        TetDebugUtil.e(pseudo_tag, "onItemClick item " + items.get(j) + "  pos = " + pos + "");
                     }
                 }
                 CallBackOnClickSpinerItem.onClickSpinerItem(t.getText().toString(), pos);
                 /* ------------------- inserted for project TSP ------------------------ */
 
-                TetDebugUtil.e(pseudo_tag," ------------------- inserted for project TSP ------------------------ ");
-                TetDebugUtil.e(pseudo_tag,"Initialiser is classname=["+classname+"]");
+                TetDebugUtil.e(pseudo_tag, " ------------------- inserted for project TSP ------------------------ ");
+                TetDebugUtil.e(pseudo_tag, "Initialiser is classname=[" + classname + "]");
 
-                ArrayList<ArrayList<String>> allSaleman = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT salesman_name FROM salesman WHERE org_id="+GlobalDatas.orgId+"");
-                ArrayList<ArrayList<String>> allZones = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT zone_name FROM zones WHERE org_id="+GlobalDatas.orgId+" ");
-                    TetDebugUtil.e(pseudo_tag,"allSaleman =["+allSaleman+"] allZones=["+allZones+"]");
-
+                ArrayList<ArrayList<String>> allSaleman = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT salesman_name FROM salesman WHERE org_id=" + GlobalDatas.orgId + "");
+                ArrayList<ArrayList<String>> allZones = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT zone_name FROM zones WHERE org_id=" + GlobalDatas.orgId + " ");
+                TetDebugUtil.e(pseudo_tag, "allSaleman =[" + allSaleman + "] allZones=[" + allZones + "]");
 
 
                 ArrayList<ArrayList<String>> allPointsArAr = new ArrayList<>();
                 if (classname.equals(SaleManActivity.class.getSimpleName())) {
-                    TetDebugUtil.e(pseudo_tag,"YES I am here 1");
-                    allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `zone`, `point_owner`, `landmarks` FROM `owner_points` WHERE `sales_name`='"+GlobalDatas.saleManName+"' AND organisation_name='"+GlobalDatas.getOrgName()+"'");
-                    if (allPointsArAr.isEmpty()){
+                    TetDebugUtil.e(pseudo_tag, "YES I am here 1");
+                    allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `zone`, `point_owner`, `landmarks` FROM `owner_points` WHERE `sales_name`='" + GlobalDatas.saleManName + "' AND organisation_name='" + GlobalDatas.getOrgName() + "'");
+                    if (allPointsArAr.isEmpty()) {
                         showAllert1_2_3_dialog();
                         return;
                     }
-
-
-                } else if (classname.equals(ZoneActivity.class.getSimpleName())){
-                    TetDebugUtil.e(pseudo_tag,"YES I am here 2");
-                    allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `zone`, `point_owner`, `landmarks` FROM `owner_points` WHERE `zone`='"+GlobalDatas.zoneName+"' AND organisation_name='"+GlobalDatas.getOrgName()+"'");
+                } else if (classname.equals(ZoneActivity.class.getSimpleName())) {
+                    TetDebugUtil.e(pseudo_tag, "YES I am here 2");
+                                       allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `point_owner`, `landmarks` FROM `owner_points` WHERE `zone`='" + GlobalDatas.zoneName + "' AND organisation_name='" + GlobalDatas.getOrgName() + "'");
+                    if (allPointsArAr.isEmpty()) {
+                        showAllert1_2_3_dialog();
+                        return;
+                    }
                 } else if (classname.equals(CreateNewRouteActivityAutonom.class.getSimpleName())) {
-                    allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `zone`, `point_owner`, `landmarks` FROM `owner_points` WHERE organisation_name='"+GlobalDatas.getOrgName()+"'");
+                    allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `zone`, `point_owner`, `landmarks` FROM `owner_points` WHERE organisation_name='" + GlobalDatas.getOrgName() + "'");
                 }
 
-                if (allSaleman.isEmpty() || allZones.isEmpty()) {
+                if (allSaleman.isEmpty()) {
                     if (allSaleman.isEmpty()) {
+                        TetDebugUtil.e(pseudo_tag, "ERROR allSaleman.isEmpty()");
                         context.startActivity(new Intent(context, AddNewSaleMan.class));
+                        closeSpinerDialog();
                     }
-                    if (allZones.isEmpty()) {
-                        context.startActivity(new Intent(context, AddNewZone.class));
-                    }
+                }
+                if (allZones.isEmpty()) {
+                    TetDebugUtil.e(pseudo_tag, "ERROR allZones.isEmpty()");
+                    Intent intent = new Intent(context, AddNewZone.class);
+                    intent.putExtra("who", ZoneActivity.class.getSimpleName());
+                    context.startActivity(intent);
                     closeSpinerDialog();
                 }
+                if (allZones.isEmpty()) {
+                    TetDebugUtil.e(pseudo_tag, "ERROR allZones.isEmpty()");
+                }
 
 
-                if (allPointsArAr.isEmpty() && !activity.getClass().getSimpleName().equals(AddNewPointOwnPoint.class.getSimpleName()) ){
+                if (allPointsArAr.isEmpty() && !activity.getClass().getSimpleName().equals(AddNewPointOwnPoint.class.getSimpleName())) {
 
-showAllert1_2_3_dialog();
+                    showAllert1_2_3_dialog();
 
                 }
                 /* -------------------------------------------------------------------------  */
@@ -210,12 +222,13 @@ showAllert1_2_3_dialog();
                 String body = context.getString(R.string.msgNoPoints);
                 Intent intent = new Intent(context, ActivityOsmOnLineAddPoint.class);
                 // Intent intent = MapsOpenerReturnIntent.getIntentPreferedMap(ThisApp.getContextApp());
-                if (intent == null){
-                    TetDebugUtil.e(pseudo_tag,"ERROR with MapsOpener.getIntentPreferedMap()");
-                    return;                 }
+                if (intent == null) {
+                    TetDebugUtil.e(pseudo_tag, "ERROR with MapsOpener.getIntentPreferedMap()");
+                    return;
+                }
 
 //                    new AllertOneAndTwoAndThreeButton().createTwoButtonsAlertDialog(context,title, body,intent);
-                new AllertOneAndTwoAndThreeButton().createThreeButtonAlertDialog(context,title,body, intent,null, false, true).show();
+                new AllertOneAndTwoAndThreeButton().createThreeButtonAlertDialog(context, title, body, intent, null, false, true).show();
             }
         });
 

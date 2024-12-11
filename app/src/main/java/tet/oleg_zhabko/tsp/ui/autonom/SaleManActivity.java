@@ -71,7 +71,7 @@ public class SaleManActivity extends Activity implements View.OnClickListener {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                ArrayList<ArrayList<String>> dataList = allDbController.executeQuery(mContext, GlobalDatas.db_name, "SELECT point_id, zone, point_owner FROM owner_points");
+                ArrayList<ArrayList<String>> dataList;// = allDbController.executeQuery(mContext, GlobalDatas.db_name, "SELECT point_id, zone, point_owner FROM owner_points");
                 adapter = null;
                 String name = s.toString();
                 dataList = allDbController.executeQuery(mContext, GlobalDatas.db_name, "SELECT point_id, zone, point_owner FROM owner_points WHERE sales_name='"+name+"' AND organisation_name='"+GlobalDatas.getOrgName()+"'");

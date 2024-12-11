@@ -76,10 +76,30 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
        // selectedItems = (TextView) findViewById(R.id.spinerOrg);
 
         vActivOrg = (TextView) findViewById(R.id.tvActivOrg); /* Text organisation name */
+        vActivOrg.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                TetDebugUtil.e(pseudo_tag,"onTextChanged to =["+s.toString()+"]");
+                String name = s.toString();
+                GlobalDatas.setOrgNameAndOrgId(name);
+                ArrayList<ArrayList<String>> dataList = allDbController.executeQuery(mContext, GlobalDatas.db_name, "SELECT point_id, zone, point_owner FROM owner_points WHERE organisation_name='" + GlobalDatas.getOrgName() + "'");
+                // prepareWindowOrganisation();
+                makePointAdapter(dataList);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         layBtnOrg = (LinearLayout) findViewById(R.id.layOfButtonOrg); /* Button's View collection */
         layChoiseAddingType = (LinearLayout) findViewById(R.id.layChoiseType);
-        listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.listViewOrgPoints);
 
 
         /* BUTTONS */
@@ -102,27 +122,7 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
         buttonSavePoints = (Button) findViewById(R.id.button_save);
         buttonSavePoints.setOnClickListener(this);
 
-        vActivOrg.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                TetDebugUtil.e(pseudo_tag,"onTextChanged to =["+s.toString()+"]");
-                String name = s.toString();
-                GlobalDatas.setOrgNameAndOrgId(name);
-                ArrayList<ArrayList<String>> dataList = allDbController.executeQuery(mContext, GlobalDatas.db_name, "SELECT point_id, zone, point_owner FROM owner_points WHERE organisation_name='" + GlobalDatas.getOrgName() + "'");
-                // prepareWindowOrganisation();
-                makePointAdapter(dataList);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         prepareWindowOrganisation();
         ArrayList<ArrayList<String>> dataList = new ArrayList<>();
@@ -134,7 +134,9 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
         if (dataList.isEmpty()) {
             dataList = allDbController.executeQuery(this, GlobalDatas.db_name, "SELECT point_id, zone, point_owner FROM owner_points WHERE organisation_name='" + GlobalDatas.getOrgName() + "'");
         }
-        adapter = null;
+        if(adapter != null) {
+            adapter = null;
+        }
         adapter = new AdapterCustomForPointsList(this, dataList);
         listView.setAdapter(adapter);
     }
@@ -159,6 +161,7 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
                 vActivOrg.setText(orgNameForGlobalData);
                 GlobalDatas.setOrgNameAndOrgId(orgNameForGlobalData);
                 GlobalDatas.orgId = orgIdForGlodalData;
+                TetDebugUtil.e(pseudo_tag, "Write GlobalDatas.orgId = "+GlobalDatas.orgId+"");
             }
         }
 
@@ -291,6 +294,7 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
                 if(!res.isEmpty()){
                     String id = res.get(0).get(0);
                     GlobalDatas.orgId = id;
+                    TetDebugUtil.e(pseudo_tag, "Write GlobalDatas.orgId = "+GlobalDatas.orgId+"");
                     layChoiseAddingType.setVisibility(View.VISIBLE);
                 }
                 TetDebugUtil.e(pseudo_tag,"GlobalDatas.organisation="+GlobalDatas.getOrgName()+" GlobalDatas.orgId ="+GlobalDatas.orgId+" position="+position+"");

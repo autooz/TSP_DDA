@@ -147,7 +147,9 @@ public class ZoneActivity extends Activity implements View.OnClickListener{
 
         if (activeArArZone.isEmpty() && passiveArArZone.isEmpty()){
             TetDebugUtil.e(pseudo_tag,"if 0 (activeArArZone.isEmpty() && passiveArArZone.isEmpty())");
-            startActivity(new Intent(getApplicationContext(),AddNewZone.class));
+            Intent intent = new Intent(this, AddNewZone.class);
+            intent.putExtra("who", ZoneActivity.class.getSimpleName());
+            this.startActivity(intent);
             this.finish();
         }
 //        if (!activeArArZone.isEmpty() && passiveArArZone.isEmpty()){
@@ -183,7 +185,7 @@ public class ZoneActivity extends Activity implements View.OnClickListener{
             ArrayList<String> passiveAr = passiveArArZone.get(0);
             if (!passiveAr.isEmpty()){
                 TetDebugUtil.e(pseudo_tag, "ADDing to items list");
-                modelSpinnerDialogZone = SpinerDialog.makeDialogAndReturnIt(selectedItems, vActivZone, this, passiveArArZone);
+                modelSpinnerDialogZone = SpinerDialog.makeDialogAndReturnIt(null, vActivZone, this, passiveArArZone);
             }
             TetDebugUtil.e(pseudo_tag,""+pseudo_tag+": spinnerDialog.showSpinerDialog();");
             modelSpinnerDialogZone.showSpinerDialog(pseudo_tag);
@@ -192,7 +194,8 @@ public class ZoneActivity extends Activity implements View.OnClickListener{
 
     private void makePointAdapter(ArrayList<ArrayList<String>> dataList, String name) {
         if (dataList.isEmpty()) {
-            dataList = allDbController.executeQuery(this, GlobalDatas.db_name, "SELECT point_id, zone, point_owner FROM owner_points WHERE zone='" + name + "' AND organisation_name='" + GlobalDatas.getOrgName() + "'");
+            TetDebugUtil.e(pseudo_tag,"makePointAdapter dataList.isEmpty()");
+            dataList = allDbController.executeQuery(this, GlobalDatas.db_name, "SELECT point_id, salesman, point_owner FROM owner_points WHERE zone='" + name + "' AND organisation_name='" + GlobalDatas.getOrgName() + "'");
         }
         adapter = null;
         adapter = new AdapterCustomForPointsList(this, dataList);
@@ -206,7 +209,9 @@ public class ZoneActivity extends Activity implements View.OnClickListener{
             modelSpinnerDialogZone.showSpinerDialog(pseudo_tag);
         } else if (id == R.id.btnCreateZone){
             TetDebugUtil.d(pseudo_tag, "PUSHED Button btnCreateOrg");
-            startActivity(new Intent(this.getApplicationContext(),AddNewZone.class));
+            Intent intent = new Intent(getApplicationContext(), AddNewZone.class);
+            intent.putExtra("who", ZoneActivity.class.getSimpleName());
+            startActivity(intent);
             this.finish();
         } else if (id == R.id.btnEditZone){
             startActivity(new Intent(getApplicationContext(),EditZone.class));

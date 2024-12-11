@@ -139,6 +139,7 @@ public class ChoiceRouteActivityAutonom extends Activity implements View.OnClick
                 vActivOrg.setText(orgNameForGlobalData);
                 GlobalDatas.setOrgNameAndOrgId(orgNameForGlobalData);
                 GlobalDatas.orgId = orgIdForGlodalData;
+                TetDebugUtil.e(pseudo_tag, "Write GlobalDatas.orgId = "+GlobalDatas.orgId+"");
             }
         }
 
@@ -236,6 +237,7 @@ public class ChoiceRouteActivityAutonom extends Activity implements View.OnClick
                 if(!res.isEmpty()){
                     String id = res.get(0).get(0);
                     GlobalDatas.orgId = id;
+                    TetDebugUtil.e(pseudo_tag, "Write GlobalDatas.orgId = "+GlobalDatas.orgId+"");
                 }
                 TetDebugUtil.e(pseudo_tag,"GlobalDatas.organisation="+GlobalDatas.getOrgName()+" GlobalDatas.orgId ="+GlobalDatas.orgId+" position="+position+"");
                 itemsOrg = new ArrayList<>();
