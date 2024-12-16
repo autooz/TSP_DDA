@@ -63,3 +63,5 @@ To install "DDA FREE" on Android, you need to follow several steps, which may va
 # Currently under development.  
 
 #Completion expected before 11/15/2024
+
+The release of the final version of the product has been rescheduled to December 20, 2024. This decision was made due to circumstances beyond the control of the software developers. Despite all efforts to adhere to the initial timeline, the adjustment was unavoidable. Thank you for your understanding.

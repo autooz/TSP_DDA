@@ -217,8 +217,8 @@ public class ZoneActivity extends Activity implements View.OnClickListener{
             startActivity(new Intent(getApplicationContext(),EditZone.class));
             this.finish();
         } else if (id == R.id.button_saveByZone) {
-
-            onBackPressed();
+            Intent intent = new Intent(getApplicationContext(),ShowAndEditRoute.class);
+            startActivity(intent);
         } else if (id == R.id.btnZoneAddPoints) {
             TetDebugUtil.e(pseudo_tag," Click btnSaleAddPoints");
             String title = getResources().getString(R.string.txtAdditingSalePoint);

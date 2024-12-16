@@ -30,7 +30,7 @@ public class PermissionUtils {
         String packageName = context.getPackageName();
         List<String> permissionsToRequest = new ArrayList<>();
         List<String> permissions = getDeclaredPermissions(packageManager, packageName);
-       // TetDebugUtil.e(pseudo_tag,"permissions ="+permissions+"");
+        TetDebugUtil.e(pseudo_tag,"permissions ="+permissions+"");
         int size = permissions.size();
         TetDebugUtil.e(pseudo_tag,"permissions.size()="+size+"");
         int ip = 0;
@@ -41,7 +41,7 @@ public class PermissionUtils {
         }
 
         if (!permissionsToRequest.isEmpty()) {
-           //TetDebugUtil.e(pseudo_tag, "Befor requestPermissions du chesk");
+           TetDebugUtil.e(pseudo_tag, "Befor requestPermissions du chesk");
             // Request permissions
            ActivityCompat.requestPermissions(activity, permissionsToRequest.toArray(new String[0]),1);
         } else {
@@ -57,6 +57,7 @@ public class PermissionUtils {
         try {
             PackageInfo packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
             String[] requestedPermissions = packageInfo.requestedPermissions;
+            TetDebugUtil.e(pseudo_tag,"requestedPermissions = ["+requestedPermissions+"]");
 
             if (requestedPermissions != null) {
                 for (String permission : requestedPermissions) {
@@ -73,7 +74,7 @@ public class PermissionUtils {
 
     public static void handlerOnRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults, Context context) {
 
-//TetDebugUtil.e(pseudo_tag,"Start  handlerOnRequestPermissionsResult "+permissions.toString()+" and grantResults "+grantResults.toString()+"");
+TetDebugUtil.e(pseudo_tag,"Start  handlerOnRequestPermissionsResult "+permissions.toString()+" and grantResults "+grantResults.toString()+"");
          /*Usage:
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -104,6 +105,7 @@ public class PermissionUtils {
         TetDebugUtil.e(pseudo_tag,"Do openAppSettings");
         TetDebugUtil.e(pseudo_tag, "openAppSettings");
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setData(Uri.parse("package:" + context.getPackageName()));
         context.startActivity(intent);
     }

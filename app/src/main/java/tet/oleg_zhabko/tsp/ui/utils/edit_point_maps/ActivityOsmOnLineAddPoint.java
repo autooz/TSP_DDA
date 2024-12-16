@@ -15,6 +15,8 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
+import java.util.Arrays;
+
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
@@ -81,7 +83,7 @@ public class ActivityOsmOnLineAddPoint extends Activity implements GpsManager.On
 
 
 
-        PermissionUtils.checkAndRequestPermissions(this,this);
+      //  PermissionUtils.checkAndRequestPermissions(this,this);
 
         if (GpsManager.checkAndEnableGps(this)){
 
@@ -168,7 +170,11 @@ public class ActivityOsmOnLineAddPoint extends Activity implements GpsManager.On
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        TetDebugUtil.e(pseudo_tag," permissions.lenz =="+ permissions.length+"");
+        if (permissions instanceof String[]) {
+            String[] strArray = (String[]) permissions;
+            System.out.println(Arrays.toString(strArray));
+            TetDebugUtil.e(pseudo_tag, " permissions.String[] ==" + permissions + "");
+        }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         TetDebugUtil.e(pseudo_tag,"Start  handlerOnRequestPermissionsResult "+permissions+" and grantResults "+grantResults+"");
         PermissionUtils.handlerOnRequestPermissionsResult(requestCode, permissions, grantResults, this);

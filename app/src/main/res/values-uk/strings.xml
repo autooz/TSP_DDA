@@ -106,7 +106,7 @@
     <string name="titleInstallApp">УСТАНОВКА APP</string>
     <string name="txtInstallAppQuest">Ви хочете встановити на свій девайс:</string>
     <string name="txtPreferredEdiorMaps">Бажана карта редагування</string>
-    <string name="btnTxtCreateToRoute">Створити маршрут</string>
+    <string name="btnTxtCreateToRoute">До маршруту</string>
     <string name="tvNewSaleM">Новий представник</string>
     <string name="tvNewZon">Нова зона</string>
 </resources>

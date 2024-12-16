@@ -1,6 +1,7 @@
 package tet.oleg_zhabko.tsp.ui.route;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -20,9 +21,13 @@ import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
 import tet.oleg_zhabko.tsp.datas.routeDbManipulation;
 import tet.oleg_zhabko.tsp.ui.autonom.AddNewPointOwnPoint;
+import tet.oleg_zhabko.tsp.ui.autonom.AddNewPointToCurrentRoute;
 import tet.oleg_zhabko.tsp.ui.autonom.ChoiceRouteActivityAutonom;
+import tet.oleg_zhabko.tsp.ui.autonom.OsmMapActivity;
+import tet.oleg_zhabko.tsp.ui.utils.AllertOneAndTwoAndThreeButton;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterCurrentRoute;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterEditRoute;
+import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityOsmOnLineAddPoint;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.ShowAllInArrayList;
@@ -31,6 +36,7 @@ import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 public class OnRouteMainActivity extends Activity {
 
     private String pseudo_tag = OnRouteMainActivity.class.getSimpleName();
+    private Activity activity = this;
     private AllDatabaseController allDatabaseController = AllDatabaseController.getSingleControllerInstance();
     Context context = this;
     ListView listViewCarrentR;
@@ -54,6 +60,8 @@ public class OnRouteMainActivity extends Activity {
         TetDebugUtil.e(pseudo_tag, "!================= START " + pseudo_tag + "============");
 
         setContentView(R.layout.activity_on_route_main);
+
+
         String organisation = new String();
         String idRoute = new String();
         String routeMame = new String();
@@ -114,8 +122,17 @@ public class OnRouteMainActivity extends Activity {
         butAddPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddNewPointOwnPoint.class);
-                startActivity(intent);
+                String title = getResources().getString(R.string.txtAdditingSalePoint);
+                String content = getResources().getString(R.string.txtEdditionPointAdd) + " "+ GlobalDatas.getOrgName();
+                Intent positive = new Intent(getApplicationContext(), ActivityOsmOnLineAddPoint.class);
+                positive.putExtra("who", pseudo_tag);
+                positive.putExtra("org",GlobalDatas.getOrgName());
+                positive.putExtra("saleman", GlobalDatas.saleManName);
+                positive.putExtra("zone", GlobalDatas.zoneId);
+                Intent negative = new Intent(getApplicationContext(), AddNewPointOwnPoint.class);
+                negative.putExtra("who", pseudo_tag);
+                AlertDialog di = new AllertOneAndTwoAndThreeButton().createAllertDialogSpetialForTCP(activity, title, content, positive, negative, false, false);
+                di.show();//(
 
             }
         });
@@ -187,6 +204,7 @@ public class OnRouteMainActivity extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!Settings.canDrawOverlays(context)) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setData(Uri.parse("package:" + context.getPackageName()));
                 startActivity(intent);
             }

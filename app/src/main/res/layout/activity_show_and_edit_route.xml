@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_CreateNewRoute"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_centerInParent="false"
-    android:layout_centerHorizontal="false"
-    android:layout_centerVertical="false"
-    android:fitsSystemWindows="true"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".ui.autonom.ShowAndEditRoute">
 
     <LinearLayout
@@ -72,6 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:background="@color/tetGreen"
         android:text="@string/save" />
 
     <TextView
@@ -132,4 +131,4 @@
         android:dividerHeight="1dp" />
 
 </LinearLayout>
-</ScrollView>
+</LinearLayout>

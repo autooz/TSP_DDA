@@ -26,6 +26,7 @@ import tet.oleg_zhabko.tsp.datas.GlobalDatas;
 import tet.oleg_zhabko.tsp.ui.autonom.AddNewPointOwnPoint;
 import tet.oleg_zhabko.tsp.ui.autonom.AddNewSaleMan;
 import tet.oleg_zhabko.tsp.ui.autonom.AddNewZone;
+import tet.oleg_zhabko.tsp.ui.autonom.ChoiceRouteActivityAutonom;
 import tet.oleg_zhabko.tsp.ui.autonom.CreateNewRouteActivityAutonom;
 import tet.oleg_zhabko.tsp.ui.autonom.SaleManActivity;
 import tet.oleg_zhabko.tsp.ui.autonom.ZoneActivity;
@@ -180,7 +181,7 @@ public class ModelSpinnerDialog {
                     }
                 } else if (classname.equals(ZoneActivity.class.getSimpleName())) {
                     TetDebugUtil.e(pseudo_tag, "YES I am here 2");
-                                       allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `point_owner`, `landmarks` FROM `owner_points` WHERE `zone`='" + GlobalDatas.zoneName + "' AND organisation_name='" + GlobalDatas.getOrgName() + "'");
+                    allPointsArAr = allDbController.executeQuery(context, GlobalDatas.db_name, "SELECT `point_id`, `point_owner`, `landmarks` FROM `owner_points` WHERE `zone`='" + GlobalDatas.zoneName + "' AND organisation_name='" + GlobalDatas.getOrgName() + "'");
                     if (allPointsArAr.isEmpty()) {
                         showAllert1_2_3_dialog();
                         return;
@@ -215,9 +216,11 @@ public class ModelSpinnerDialog {
                 }
                 /* -------------------------------------------------------------------------  */
                 closeSpinerDialog();
+
             }
 
             private void showAllert1_2_3_dialog() {
+                if (!classname.equals(ChoiceRouteActivityAutonom.class.getSimpleName())){
                 String title = context.getString(R.string.worning);
                 String body = context.getString(R.string.msgNoPoints);
                 Intent intent = new Intent(context, ActivityOsmOnLineAddPoint.class);
@@ -230,7 +233,9 @@ public class ModelSpinnerDialog {
 //                    new AllertOneAndTwoAndThreeButton().createTwoButtonsAlertDialog(context,title, body,intent);
                 new AllertOneAndTwoAndThreeButton().createThreeButtonAlertDialog(context, title, body, intent, null, false, true).show();
             }
+        }
         });
+
 
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override

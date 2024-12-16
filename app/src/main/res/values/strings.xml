@@ -105,7 +105,7 @@
     <string name="titleInstallApp">APP INSTALLATION</string>
     <string name="txtInstallAppQuest">You want to install on your device:</string>
     <string name="txtPreferredEdiorMaps">Preferred Edit Map</string>
-    <string name="btnTxtCreateToRoute">Create route</string>
+    <string name="btnTxtCreateToRoute">Go to route</string>
     <string name="tvNewSaleM">New Representative</string>
     <string name="tvNewZon">New zone</string>
 

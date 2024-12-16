@@ -101,6 +101,10 @@ public class AdapterCustomForPointsList extends BaseAdapter implements AllertDia
         holder.pointIdTextView.setText(currentItem.get(0));  // point_id
         holder.point_fiel1_TextView.setText(currentItem.get(1));  // sales_name
         holder.point_fiel2_TextView.setText(currentItem.get(2));  // zone
+        if (isInListCheckedState(currentItem.get(0))){
+            checkedStates[position] = true;
+            holder.checkBox.setChecked(true);
+        }
         // Setting the checkbox state
         if (CheckIsItemDubbed.checkIsDubbed(GlobalDatas.pointChecked,currentItem)){
             checkedStates[position] = true;
@@ -142,6 +146,18 @@ public class AdapterCustomForPointsList extends BaseAdapter implements AllertDia
         });
 
         return convertView;
+    }
+
+    private boolean isInListCheckedState(String pointId) {
+       int size = GlobalDatas.pointChecked.size();
+       for (int i=0; size > i; i++) {
+           ArrayList<String> pointChecked = GlobalDatas.pointChecked.get(i);
+           TetDebugUtil.e(pseudo_tag, "isInListCheckedState of point=]"+pointChecked+"[");
+           if (pointChecked.get(0).equals(pointId)) {
+               return true;
+           }
+       }
+       return false;
     }
 
 

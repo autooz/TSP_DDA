@@ -182,7 +182,8 @@ public class SaleManActivity extends Activity implements View.OnClickListener {
             startActivity(new Intent(getApplicationContext(),EditSaleMan.class));
             this.finish();
         } else if (id == R.id.button_saveBySale) {
-            onBackPressed();
+            Intent intent = new Intent(getApplicationContext(),ShowAndEditRoute.class);
+            startActivity(intent);
         } else if (id == R.id.btnSaleAddPoints) {
             TetDebugUtil.e(pseudo_tag," Click btnSaleAddPoints");
             String title = getResources().getString(R.string.txtAdditingSalePoint);

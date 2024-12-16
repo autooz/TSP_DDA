@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
+import tet.oleg_zhabko.tsp.ui.route.OnRouteMainActivity;
 import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityOsmOnLineAddPoint;
 import tet.oleg_zhabko.tsp.ui.utils.spinerdialog.ModelSpinnerDialog;
 import tet.oleg_zhabko.tsp.ui.utils.spinerdialog.SpinerDialog;
@@ -76,6 +78,7 @@ public class AddNewPointOwnPoint extends Activity implements View.OnClickListene
     private String org;
     private String saleman;
     private String zone;
+    private boolean caledFromRoute = false;
     /* ----- */
 
     @Override
@@ -102,8 +105,10 @@ public class AddNewPointOwnPoint extends Activity implements View.OnClickListene
         TextView txtNewPointTitle = (TextView) findViewById(R.id.txtNewPointTitle);
         String title = getResources().getString(R.string.txtTitleNewPoint) + ": " + GlobalDatas.getOrgName();
         txtNewPointTitle.setText(title);
+        TextView latLon = (TextView) findViewById(R.id.LatLon);
+        latLon.setText("Lat:" + Float.toString(toDb_lat) + " Lon:" + Float.toString(toDb_lon));
         TextView txtNewPointName = (TextView) findViewById(R.id.txtNewPointName);
-        String txt = getResources().getString(R.string.txtPointName) + "\n Lat:" + Float.toString(toDb_lat) + " Lon:" + Float.toString(toDb_lon) + "";
+        String txt = getResources().getString(R.string.txtPointName);
         txtNewPointName.setText(txt);
         toDb_organisation = GlobalDatas.getOrgName();
         toDb_orgId = GlobalDatas.orgId;
@@ -123,7 +128,6 @@ public class AddNewPointOwnPoint extends Activity implements View.OnClickListene
         toDb_edtNewStartSyrikeMinutes = (EditText) findViewById(R.id.edtNewStartSyrikeMinutes);
         toDb_edtFinStrikeHouer = (EditText) findViewById(R.id.edtFinStrikeHouer);
         toDb_edtFinStrileMinutes = (EditText) findViewById(R.id.edtFinStrileMinutes);
-
         buttonSavePoint = (Button) findViewById(R.id.btnSavePoint);
         buttonSavePoint.setOnClickListener(this);
         buttoDoNotSavePoint = (Button) findViewById(R.id.btnDoNotSavePoint);
@@ -143,6 +147,8 @@ public class AddNewPointOwnPoint extends Activity implements View.OnClickListene
                 org = intent.getStringExtra("org");
                 saleman = intent.getStringExtra("saleman");
                 zone = intent.getStringExtra(zone);
+            } else if (who.equals(OnRouteMainActivity.class.getSimpleName())) {
+                caledFromRoute = true;
             }
             TetDebugUtil.e(pseudo_tag, "intentManipulation who=[" + who + "] toDb_lat=[" + toDb_lat + "] toDb_lon=[" + toDb_lon + "]");
         }
@@ -326,15 +332,29 @@ public class AddNewPointOwnPoint extends Activity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.btnShowSalePoint) {
-            modelSpinnerDialogSale.showSpinerDialog(pseudo_tag);
-        } else if (id == R.id.btnShowZonePoint) {
-            modelSpinnerDialogZone.showSpinerDialog(pseudo_tag);
-        } else if (id == R.id.btnSavePoint) {
-            TetDebugUtil.d(pseudo_tag, "Pushed save");
-            prepareAndSaveDatas();
-        } else if (id == R.id.btnDoNotSavePoint) {
-            onBackPressed();
+        if (who.equals(OnRouteMainActivity.class.getSimpleName()))
+        {
+            if (id == R.id.btnShowSalePoint) {
+                modelSpinnerDialogSale.showSpinerDialog(who);
+            } else if (id == R.id.btnShowZonePoint) {
+                modelSpinnerDialogZone.showSpinerDialog(who);
+            } else if (id == R.id.btnSavePoint) {
+                TetDebugUtil.d(pseudo_tag, "Pushed save");
+                prepareAndSaveDatas();
+            } else if (id == R.id.btnDoNotSavePoint) {
+                onBackPressed();
+            }
+        } else {
+            if (id == R.id.btnShowSalePoint) {
+                modelSpinnerDialogSale.showSpinerDialog(pseudo_tag);
+            } else if (id == R.id.btnShowZonePoint) {
+                modelSpinnerDialogZone.showSpinerDialog(pseudo_tag);
+            } else if (id == R.id.btnSavePoint) {
+                TetDebugUtil.d(pseudo_tag, "Pushed save");
+                prepareAndSaveDatas();
+            } else if (id == R.id.btnDoNotSavePoint) {
+                onBackPressed();
+            }
         }
     }
 
@@ -375,6 +395,16 @@ public class AddNewPointOwnPoint extends Activity implements View.OnClickListene
         String query = insert + "("+variables+") VALUES ("+values+");";
         TetDebugUtil.e(pseudo_tag, " query = [ "+query+" ]");
         allDbController.executeQuery(this, GlobalDatas.db_name, query);
+        if(who.equals(OnRouteMainActivity.class.getSimpleName())){
+            TetDebugUtil.e(pseudo_tag, " Add point to current route [ "+query+" ]");
+            String id = allDbController.executeQuery(this,GlobalDatas.db_name,"SELECT point_id FROM owner_points order by point_id DESC limit 1;").get(0).get(0);
+            String insertToRoute = "INSERT INTO current_route ";
+            String queryRoute = insertToRoute + "(point_id, "+variables+") VALUES ("+id+","+values+");";
+            TetDebugUtil.e(pseudo_tag, " Add point to current route [ "+queryRoute+" ]");
+            allDbController.executeQuery(this, GlobalDatas.db_name, queryRoute);
+            startActivity(new Intent(getApplicationContext(), OnRouteMainActivity.class));
+            this.finish();
+        }
         onBackPressed();
 
 
@@ -392,12 +422,17 @@ public class AddNewPointOwnPoint extends Activity implements View.OnClickListene
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-//        if (who.equals(SaleManActivity.class.getSimpleName())){
-//            startActivity(new Intent(getApplicationContext(), SaleManActivity.class));
-//            this.finish();
-//        }
-        startActivity(new Intent(getApplicationContext(), ActivityOsmOnLineAddPoint.class));
-        this.finish();
+        if (who != null) {
+            if (who.equals(AddNewPointOwnPoint.class.getSimpleName())) {
+                startActivity(new Intent(getApplicationContext(), AddNewPointOwnPoint.class));
+                this.finish();
+            } else if (who.equals(OnRouteMainActivity.class.getSimpleName())) {
+                startActivity(new Intent(getApplicationContext(), OnRouteMainActivity.class));
+                this.finish();
+            }
+            startActivity(new Intent(getApplicationContext(), ActivityOsmOnLineAddPoint.class));
+            this.finish();
+        }
     }
 
 }
