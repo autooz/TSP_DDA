@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -94,7 +93,7 @@ public class AddNewPointOwnPoint extends Activity implements View.OnClickListene
         toDb_lon = intent.getFloatExtra("lon", 0);
 
         TetDebugUtil.e(pseudo_tag, "Lat " + toDb_lat + " " + "lon " + toDb_lon + "");
-        colorRed = getApplicationContext().getResources().getColor(R.color.colorAccent);
+        colorRed = getApplicationContext().getResources().getColor(R.color.tetAccent);
         colorGreen = getApplicationContext().getResources().getColor(R.color.tetGreen);
 
         setContentView(R.layout.activity_add_new_point_own_point);

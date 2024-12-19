@@ -109,4 +109,16 @@
     <string name="btnTxtCreateToRoute">До маршруту</string>
     <string name="tvNewSaleM">Новы прадстаўнік</string>
     <string name="tvNewZon">Новая зона</string>
+    <string name="noDatas">Няма дадзеных</string>
+    <string name="txtCorrect">Карэктаваць</string>
+    <string name="notconnected">Дадатак не падключан да сервера.</string>
+    <string name="we_are_here">Мы дапаможам вашаму бізнесу выйсці на новы ўзровень!</string>
+    <string name="txtzoneTimeZone">Часавы пояс:</string>
+    <string name="txtTimezone"> (UTC+2)</string>
+    <string name="txtWhatsApp">Тэлефон\nTelegram\nWhatsApp\nViber:</string>
+    <string name="txWhatsApp">+380 (67) 411-98-75</string>
+    <string name="mAddress">Адрас:</string>
+    <string name="txtMaddress">13312 Украіна, горад Бярдзічаў, Здароўя 34</string>
+    <string name="txtServerInfo">Сардэчна запрашаем! Калі вы шукаеце унікальныя рашэнні для аптымізацыі вашага аўтапарку і офісных працэсаў, вы на правільным шляху! Наш дадатак дэманструе толькі базавыя функцыі, але для вашага бізнесу мы прапануем індывідуальныя інтэграцыі з улікам вашых патрэбаў. Сервер і дадатак распрацоўваюцца з улікам асаблівасцей праграм і абсталявання вашага офіса, ствараючы сапраўды ўнікальнае рашэнне.</string>
+    <string name="txtDoContact">Звяжыцеся з намі для замовы інтэграцыі:</string>
 </resources>

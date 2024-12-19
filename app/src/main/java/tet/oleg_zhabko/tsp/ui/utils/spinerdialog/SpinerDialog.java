@@ -49,12 +49,12 @@ public class SpinerDialog {
         ModelSpinnerDialog modelSpinnerDialog = new ModelSpinnerDialog(activity, itemsList,
                 dialogTitle);
 
-        modelSpinnerDialog.setTitleColor(activity.getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialog.setSearchIconColor(activity.getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialog.setSearchTextColor(activity.getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialog.setItemColor(activity.getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialog.setItemDividerColor(activity.getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialog.setCloseColor(activity.getResources().getColor(R.color.colorAccent));
+        modelSpinnerDialog.setTitleColor(activity.getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialog.setSearchIconColor(activity.getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialog.setSearchTextColor(activity.getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialog.setItemColor(activity.getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialog.setItemDividerColor(activity.getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialog.setCloseColor(activity.getResources().getColor(R.color.tetAccent));
 
         modelSpinnerDialog.setCancellable(true);
         modelSpinnerDialog.setShowKeyboard(false);

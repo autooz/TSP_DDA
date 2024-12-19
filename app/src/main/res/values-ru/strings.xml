@@ -109,4 +109,16 @@
     <string name="btnTxtCreateToRoute">К маршруту</string>
     <string name="tvNewSaleM">Новый \n представитель</string>
     <string name="tvNewZon">Новая \n зона</string>
+    <string name="noDatas">Нет данных</string>
+    <string name="txtCorrect">Корректировать</string>
+    <string name="notconnected">Приложение не подключено к серверу.</string>
+    <string name="we_are_here">Мы рады помочь вашему бизнесу выйти на новый уровень!</string>
+    <string name="txtzoneTimeZone">Часовой пояс:</string>
+    <string name="txtTimezone"> (UTC+2)</string>
+    <string name="txtWhatsApp">Телефон\nTelegram\nWhatsApp\nViber:</string>
+    <string name="txWhatsApp">+380 (67) 411-98-75</string>
+    <string name="mAddress">Адрес:</string>
+    <string name="txtMaddress">13312 Украина, город Бердичев, Здоровья 34</string>
+    <string name="txtServerInfo">Добро пожаловать! Если вы ищете уникальные решения для оптимизации вашего автомобильного парка и офисных процессов, вы на правильном пути! Наше приложение демонстрирует только базовые функции, но для вашего бизнеса мы предлагаем индивидуальные интеграции с учетом ваших потребностей. Сервер и приложение разрабатываются с учетом особенностей программ и оборудования вашего офиса, создавая по-настоящему уникальное решение.</string>
+    <string name="txtDoContact">Свяжитесь с нами для заказа интеграции:</string>
 </resources>

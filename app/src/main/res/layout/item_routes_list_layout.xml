@@ -5,6 +5,7 @@
     android:orientation="horizontal"
     android:padding="10dp">
 
+
     <TextView
         android:id="@+id/route_id"
         android:layout_width="0dp"

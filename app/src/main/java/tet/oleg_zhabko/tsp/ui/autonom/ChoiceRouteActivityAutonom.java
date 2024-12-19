@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -30,13 +29,11 @@ import tet.oleg_zhabko.tsp.R;
 import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterChoiseRoutes;
-import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterCustomForPointsList;
 import tet.oleg_zhabko.tsp.ui.utils.spinerdialog.ModelSpinnerDialog;
 import tet.oleg_zhabko.tsp.ui.utils.spinerdialog.OnClickSpinerItemCAllBackInterface;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
 import tet.tetlibrarymodules.tetdebugutils.debug.CrashAppExceptionHandler;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
-import tet.oleg_zhabko.tsp.ui.utils.isFieldEmptyOrWrited;
 
 public class ChoiceRouteActivityAutonom extends Activity implements View.OnClickListener {
     private String pseudo_tag = ChoiceRouteActivityAutonom.class.getSimpleName();
@@ -217,12 +214,12 @@ public class ChoiceRouteActivityAutonom extends Activity implements View.OnClick
         modelSpinnerDialogOrg = new ModelSpinnerDialog(ChoiceRouteActivityAutonom.this, itemsOrg,
                 dialogTitleOrg);
 
-        modelSpinnerDialogOrg.setTitleColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setSearchIconColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setSearchTextColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setItemColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setItemDividerColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setCloseColor(getResources().getColor(R.color.colorAccent));
+        modelSpinnerDialogOrg.setTitleColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setSearchIconColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setSearchTextColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setItemColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setItemDividerColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setCloseColor(getResources().getColor(R.color.tetAccent));
 
         modelSpinnerDialogOrg.setCancellable(true);
         modelSpinnerDialogOrg.setShowKeyboard(false);

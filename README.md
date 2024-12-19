@@ -32,8 +32,8 @@ To install "DDA FREE" on Android, you need to follow several steps, which may va
 
 ### Step 3: Extracting the APK File  
 1. Use any archive manager (e.g., WinRAR, 7-Zip, or the built-in tool in Android OS) to unzip the downloaded ZIP file.  
-2. Open the extracted folder: **TSP_DDA-main/app/debug/**.  
-3. Locate the file with the **.apk** extension (e.g., `dda-debug.apk`). This is the installation file for the app.  
+2. Open the extracted folder: **TSP_DDA-main/app/debug/**. or **TSP_DDA-main/app/release/** 
+3. Locate the file with the **.apk** extension (e.g., `dda-debug.apk` or  `dda-release.apk` for last tested APP ). This is the installation file for the app.  
 
    > **Note:** If you performed the previous steps on another device, transfer the APK file to the device where you want to install the app.
 

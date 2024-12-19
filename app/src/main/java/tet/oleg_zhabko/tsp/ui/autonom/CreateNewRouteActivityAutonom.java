@@ -25,6 +25,7 @@ import tet.oleg_zhabko.tsp.ThisApp;
 import tet.oleg_zhabko.tsp.datas.GlobalDatas;
 import tet.oleg_zhabko.tsp.ui.MainActivityAutonom;
 import tet.oleg_zhabko.tsp.ui.utils.adapters.AdapterCustomForPointsList;
+import tet.oleg_zhabko.tsp.ui.utils.edit_point_maps.ActivityOsmOnLineAddPoint;
 import tet.oleg_zhabko.tsp.ui.utils.spinerdialog.OnClickSpinerItemCAllBackInterface;
 import tet.oleg_zhabko.tsp.ui.utils.spinerdialog.ModelSpinnerDialog;
 import tet.tetlibrarymodules.alldbcontroller.AllDatabaseController;
@@ -62,6 +63,7 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
     private Button buttonNewSAleMan;
     private Button buttonNezone;
     private Button buttonSavePoints;
+    private Button buttonNewPoint;
 
 
     @Override
@@ -121,6 +123,8 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
         buttonNezone.setOnClickListener(this);
         buttonSavePoints = (Button) findViewById(R.id.button_save);
         buttonSavePoints.setOnClickListener(this);
+        buttonNewPoint = (Button) findViewById(R.id.button_newPoint);
+        buttonNewPoint.setOnClickListener(this);
 
 
 
@@ -257,6 +261,9 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
             }
           //  Toast.makeText(this, "Отмечено элементов: " + checkedItems.size(), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(), ShowAndEditRoute.class));
+        } else if (id == R.id.button_newPoint) {
+            startActivity(new Intent(getApplicationContext(), ActivityOsmOnLineAddPoint.class));
+            this.finish();
         }
     }
 
@@ -274,12 +281,12 @@ public class CreateNewRouteActivityAutonom extends Activity implements View.OnCl
         modelSpinnerDialogOrg = new ModelSpinnerDialog(CreateNewRouteActivityAutonom.this, itemsOrg,
                 dialogTitleOrg);
 
-        modelSpinnerDialogOrg.setTitleColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setSearchIconColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setSearchTextColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setItemColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setItemDividerColor(getResources().getColor(R.color.colorAccent));
-        modelSpinnerDialogOrg.setCloseColor(getResources().getColor(R.color.colorAccent));
+        modelSpinnerDialogOrg.setTitleColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setSearchIconColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setSearchTextColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setItemColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setItemDividerColor(getResources().getColor(R.color.tetAccent));
+        modelSpinnerDialogOrg.setCloseColor(getResources().getColor(R.color.tetAccent));
 
         modelSpinnerDialogOrg.setCancellable(true);
         modelSpinnerDialogOrg.setShowKeyboard(false);

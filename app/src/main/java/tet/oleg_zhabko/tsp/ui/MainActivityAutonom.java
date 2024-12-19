@@ -59,8 +59,9 @@ private String pseudo_tag = MainActivityAutonom.class.getSimpleName();
             intent = new Intent(getApplicationContext(), Statistics.class);
         } else if (id == R.id.newRouteOwn) {
             intent = new Intent(getApplicationContext(), CreateNewRouteActivityAutonom.class);
-        } else if (id == R.id.closeFromAppMAA) {//               intent = new Intent(getApplicationContext(), MainActivityDataPickerView.class);
+        } else if (id == R.id.closeFromAppMAA) {
             intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         }
         startActivity(intent);
         this.finish();
@@ -70,7 +71,9 @@ private String pseudo_tag = MainActivityAutonom.class.getSimpleName();
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
         this.finish();
     }
 }

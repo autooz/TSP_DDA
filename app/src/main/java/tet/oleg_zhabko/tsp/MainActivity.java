@@ -2,6 +2,7 @@ package tet.oleg_zhabko.tsp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button closApp_button;
     private Button debug_button;
     private AllDatabaseController allDbController = AllDatabaseController.getSingleControllerInstance();
+    private int colorRed;
+    private int colorGreen;
+    private int flow;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +53,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
        // debug_button.setVisibility(View.GONE);
         debug_button.setOnClickListener(this);
 
-
+        Resources resource = getResources();
+        colorRed = resource.getColor(R.color.tetAccent);
+        colorGreen = resource.getColor(R.color.tetGreen);
+        flow = resource.getColor(R.color.tetElow);
+        if  (GlobalDatas.db_name.equals("routing.db")) {
+            autonom_button.setBackgroundColor(colorGreen);
+            debug_button.setBackgroundColor(colorRed);
+        } else if (GlobalDatas.db_name.equals("demo.db")){
+            autonom_button.setBackgroundColor(flow);
+            debug_button.setBackgroundColor(colorGreen);
+        }
         /*Chech Db create/ If No Db creat it and advise */
+        checkOrCreateDb();
 
+        setGlobalDatas_navigationAPP();
+
+    }
+
+    private void checkOrCreateDb() {
         if (!allDbController.isDbCreated(this, GlobalDatas.db_name)) {
             TetDebugUtil.e(pseudo_tag, "This is First Start");
 
@@ -59,12 +79,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 TetDebugUtil.e(pseudo_tag, "DB not created");
             } else {
                 TetDebugUtil.e(pseudo_tag, "DB created OK!");
+                if (GlobalDatas.db_name.equals("demo.db")){
+                    new addDemoDatas().insertDatasToDb(GlobalDatas.db_name);
+
+                }
                 startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
             }
         } else {
             ThisApp.getInstance().adjastFontScale();
         }
-        setGlobalDatas_navigationAPP();
+
 
     }
 
@@ -74,13 +98,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
         int id = v.getId();
         if (id == R.id.autonomiusly) {
             intent = new Intent(getApplicationContext(), MainActivityAutonom.class);
+//            autonom_button.setBackgroundColor();
+//            debug_button.setBackgroundColor();
+            GlobalDatas.db_name = "routing.db";
         } else if (id == R.id.wiaserver) {
             intent = new Intent(getApplicationContext(), MainActivityWiaServer.class);
         } else if (id == R.id.closeApp) {
             //  intent = new Intent(getApplicationContext(), MainActivityDataPickerView.class);
             finish();
         } else if (id == R.id.debugApp){
-            new addDemoDatas().insertDatasToDb(GlobalDatas.db_name);
+            if (GlobalDatas.db_name.equals("demo.db")){
+                startActivity(new Intent(getApplicationContext(), MainActivityAutonom.class));
+            } else {
+                GlobalDatas.db_name = "demo.db";
+                checkOrCreateDb();
+//                autonom_button.setBackgroundColor();
+//                debug_button.setBackgroundColor();
+            }
         }
         if (intent != null) {
             startActivity(intent);

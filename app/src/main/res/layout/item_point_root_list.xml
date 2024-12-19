@@ -49,7 +49,7 @@
         android:layout_width="30sp"
         android:layout_height="30sp"
         android:layout_gravity="center_vertical"
-        android:background="@color/colorAccent"
+        android:background="@color/tetAccent"
         android:text="X"
         android:textStyle="bold" />
 </LinearLayout>

@@ -109,4 +109,16 @@
     <string name="btnTxtCreateToRoute">До маршруту</string>
     <string name="tvNewSaleM">Новий представник</string>
     <string name="tvNewZon">Нова зона</string>
+    <string name="noDatas">Немає даних</string>
+    <string name="txtCorrect">Коригувати</string>
+    <string name="notconnected">Програма не підключена до сервера.</string>
+    <string name="we_are_here">Ми допоможемо вашому бізнесу піднятися на новий рівень!</string>
+    <string name="txtzoneTimeZone">Часовий пояс:</string>
+    <string name="txtTimezone"> (UTC+2)</string>
+    <string name="txtWhatsApp">Телефон\nTelegram\nWhatsApp\nViber:</string>
+    <string name="txWhatsApp">+380 (67) 411-98-75</string>
+    <string name="mAddress">Адреса:</string>
+    <string name="txtMaddress">13312 Україна, місто Бердичів, Здоров\’я 34</string>
+    <string name="txtServerInfo">Ласкаво просимо! Якщо ви шукаєте унікальні рішення для оптимізації автопарку та офісних процесів, ви на правильному шляху! Наш додаток демонструє лише базові функції, але ми пропонуємо індивідуальну інтеграцію відповідно до ваших потреб. Сервер і додаток розробляються з урахуванням особливостей програм та обладнання вашого офісу, створюючи справді унікальне рішення.</string>
+    <string name="txtDoContact">Звертайтеся до нас для замовлення інтеграції:</string>
 </resources>

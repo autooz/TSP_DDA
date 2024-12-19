@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:background="@color/colorAccent"
+            android:background="@color/tetAccent"
             android:text="@string/txtDelete"
             android:textSize="10sp" />
 

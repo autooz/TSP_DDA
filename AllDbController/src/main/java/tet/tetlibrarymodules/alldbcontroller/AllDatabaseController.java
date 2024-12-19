@@ -11,6 +11,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.ShowAllInArrayList;
 import tet.tetlibrarymodules.tetdebugutils.debug.debug_tools.TetDebugUtil;
 
 
@@ -184,8 +185,5 @@ public class AllDatabaseController {
     public void createNewDb(Context context,String db_name) {
         AllDBHelperSQLite dbhelper = new AllDBHelperSQLite(context, db_name);
     }
-
-
-
 
 }

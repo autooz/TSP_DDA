@@ -34,6 +34,7 @@ public class GlobalDatas {
     public static String zoneId = new String();
     public static String setingMapsActivity = "mapsActivity";
     public static String navigationAPP = new String();
+    public static String directPointID = new String();
     public static GeoPoint startGeoPoint = new GeoPoint(49.8992800, 28.6023500);
     public static float minGpsAccurracy = 10.1f;
     public static boolean gpsPaused = false;
