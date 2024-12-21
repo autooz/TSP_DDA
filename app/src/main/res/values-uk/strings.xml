@@ -116,9 +116,9 @@
     <string name="txtzoneTimeZone">Часовий пояс:</string>
     <string name="txtTimezone"> (UTC+2)</string>
     <string name="txtWhatsApp">Телефон\nTelegram\nWhatsApp\nViber:</string>
-    <string name="txWhatsApp">+380 (67) 411-98-75</string>
     <string name="mAddress">Адреса:</string>
-    <string name="txtMaddress">13312 Україна, місто Бердичів, Здоров\’я 34</string>
     <string name="txtServerInfo">Ласкаво просимо! Якщо ви шукаєте унікальні рішення для оптимізації автопарку та офісних процесів, ви на правильному шляху! Наш додаток демонструє лише базові функції, але ми пропонуємо індивідуальну інтеграцію відповідно до ваших потреб. Сервер і додаток розробляються з урахуванням особливостей програм та обладнання вашого офісу, створюючи справді унікальне рішення.</string>
-    <string name="txtDoContact">Звертайтеся до нас для замовлення інтеграції:</string>
+    <string name="txtComProposition">Комерційна пропозиція українським підприємцям та організаціям «last-mile delivery».</string>
+    <string name="read">Читати 17 сторінок</string>
+    <string name="download">Завантажити PDF</string>
 </resources>

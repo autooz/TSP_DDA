@@ -108,17 +108,17 @@
     <string name="btnTxtCreateToRoute">Go to route</string>
     <string name="tvNewSaleM">New Representative</string>
     <string name="tvNewZon">New zone</string>
-    <string name="noDatas">Нет данных</string>
-    <string name="txtCorrect">Корректировать</string>
+    <string name="noDatas">No data</string>
+    <string name="txtCorrect">Edit</string>
     <string name="notconnected">Application is not connected to the server.</string>
     <string name="we_are_here">We are here to help your business reach new heights!</string>
     <string name="txtzoneTimeZone">Time zone:</string>
     <string name="txtTimezone">(UTC+2)</string>
     <string name="txtWhatsApp">"Phone\nTelegram\nWhatsApp\nViber: "</string>
-    <string name="txWhatsApp">+380 (67) 411-98-75</string>
     <string name="mAddress">Address:</string>
-    <string name="txtMaddress">13312 Ukraine, Berdychiv, Zdorovia St. 34</string>
     <string name="txtServerInfo">Welcome! If you\'re looking for unique solutions to optimize your vehicle fleet and office processes, you\'re in the right place! Our app showcases basic features, but we offer customized integrations tailored to your specific needs. Both the server and the app are developed considering your office\'s software and hardware, creating a truly unique solution.</string>
-    <string name="txtDoContact">Contact us to order your integration:</string>
+    <string name="txtComProposition">Commercial offer to Ukrainian entrepreneurs and organizations "last-mile delivery".</string>
+    <string name="read">Read 17 pages</string>
+    <string name="download">Download PDF</string>
 
 </resources>
