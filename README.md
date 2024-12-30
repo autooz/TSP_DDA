@@ -6,7 +6,7 @@ Delivery Driver Assistant Android app for drivers who, working independently in 
 Starting January 1st, we will no longer provide support for the source code on GitHub due to the integration of modules that require developers to register paid accounts for each program instance connected to these services.
 
 However, we’ve got great news! These new modules will be included in every upcoming release of the program. You can download the latest version for free (forever, without ads or registration) here:
-👉 [Download the app] ( **TSP_DDA-main/app/release/app-release.apk**)
+👉 [Download the app] ( TSP_DDA-main/app/release/app-release.apk)
 Thank you for being with us, and enjoy the app!
 
 # How to Install "DDA FREE" on Android
