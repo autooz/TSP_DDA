@@ -23,45 +23,45 @@ public class MainActivityWiaServer extends Activity {
 
         setContentView(R.layout.activity_main_wia_server);
 
-        Button r = (Button) findViewById(R.id.toread);
-        Button d = (Button) findViewById(R.id.toDownload);
+    //     Button r = (Button) findViewById(R.id.toread);
+    //     Button d = (Button) findViewById(R.id.toDownload);
 
-        r.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    //     r.setOnClickListener(new View.OnClickListener() {
+    //         @Override
+    //         public void onClick(View v) {
 
-            }
-        });
+    //         }
+    //     });
 
-        d.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // PdfUtil.copyPdfToDownloads(MainActivityWiaServer.this, "commersCompile.uk.pdf");
-                checkPermissionAndCopyPdf();
-            }
-        });
+    //     d.setOnClickListener(new View.OnClickListener() {
+    //         @Override
+    //         public void onClick(View v) {
+    //             // PdfUtil.copyPdfToDownloads(MainActivityWiaServer.this, "commersCompile.uk.pdf");
+    //             checkPermissionAndCopyPdf();
+    //         }
+    //     });
 
 
-    }
-    private void checkPermissionAndCopyPdf() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_STORAGE);
-        } else {
-            PdfUtil.copyPdfToDownloads(this, "commersCompile.uk.pdf");
-        }
-    }
+    // }
+    // private void checkPermissionAndCopyPdf() {
+    //     if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    //             != PackageManager.PERMISSION_GRANTED) {
+    //         ActivityCompat.requestPermissions(this,
+    //                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_STORAGE);
+    //     } else {
+    //         PdfUtil.copyPdfToDownloads(this, "commersCompile.uk.pdf");
+    //     }
+    // }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_WRITE_STORAGE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                PdfUtil.copyPdfToDownloads(this, "commersCompile.uk.pdf");;
-            } else {
-                Toast.makeText(this, "Разрешение на запись отклонено", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
+    // @Override
+    // public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    //     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    //     if (requestCode == REQUEST_WRITE_STORAGE) {
+    //         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+    //             PdfUtil.copyPdfToDownloads(this, "commersCompile.uk.pdf");;
+    //         } else {
+    //             Toast.makeText(this, "Разрешение на запись отклонено", Toast.LENGTH_SHORT).show();
+    //         }
+    //     }
+    // }
 }
